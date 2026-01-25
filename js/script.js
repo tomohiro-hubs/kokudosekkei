@@ -1,3 +1,8 @@
+const getPath = (path) => {
+    const root = window.rootPath || './';
+    return path.startsWith('/') ? root + path.slice(1) : path;
+};
+
 // --- Data ---
 const appData = {
     "site": {
@@ -222,10 +227,19 @@ function initApp() {
     const path = window.location.pathname;
     document.querySelectorAll('.nav-link').forEach(el => {
         el.classList.remove('active', 'text-brandGold');
-        const href = el.getAttribute('href');
-        if (href === '/' && (path === '/' || path.endsWith('index.html'))) {
-            el.classList.add('active', 'text-brandGold');
-        } else if (href !== '/' && path.includes(href)) {
+        const dataPath = el.getAttribute('data-path'); // Use data-path specificially
+
+        // Check for Home
+        if (dataPath === '/' && (path.endsWith('/') || path.endsWith('index.html'))) {
+            // For home, we only strict match the end of the path to avoid it being active on all subpages
+            // But valid home paths: /repo/index.html, /repo/, /index.html
+            // Simple check: if NOT works/carriers/contact
+            if (!path.includes('works') && !path.includes('careers') && !path.includes('contact') && !path.includes('privacy') && !path.includes('sitemap')) {
+                el.classList.add('active', 'text-brandGold');
+            }
+        }
+        else if (dataPath !== '/' && path.includes(dataPath.replace(/\//g, ''))) {
+            // Removing slashes for safer check, e.g. "works" in "/repo/works/index.html"
             el.classList.add('active', 'text-brandGold');
         }
     });
@@ -317,8 +331,8 @@ function renderHome() {
 
     // Works Preview (Updated Paths)
     const worksHtml = works.slice(0, 3).map((w, index) => `
-        <a href="/works/" class="reveal delay-${index * 100} group relative block h-80 overflow-hidden bg-gray-100">
-            <img src="${w.image}" alt="${w.title}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
+        <a href="${getPath('/works/')}" class="reveal delay-${index * 100} group relative block h-80 overflow-hidden bg-gray-100">
+            <img src="${getPath(w.image)}" alt="${w.title}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
             <div class="absolute inset-0 bg-brandNavy/40 transition duration-500 group-hover:bg-brandNavy/20"></div>
             <div class="absolute bottom-0 left-0 w-full p-8 text-white">
                 <div class="text-xs font-mono mb-2 opacity-80">${w.year} / ${w.type === 'survey' ? 'SURVEY' : 'COMPENSATION'}</div>
@@ -331,7 +345,7 @@ function renderHome() {
     container.innerHTML = `
         <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
             <div class="absolute inset-0 z-0">
-                <img src="/images/hero.jpg" class="w-full h-full object-cover animate-[scale-in_20s_infinite_alternate]" style="animation: scale-in 30s linear infinite alternate;">
+                <img src="${getPath('/images/hero.jpg')}" class="w-full h-full object-cover animate-[scale-in_20s_infinite_alternate]" style="animation: scale-in 30s linear infinite alternate;">
                 <div class="absolute inset-0 bg-gradient-to-r from-brandNavy/80 via-brandNavy/40 to-brandNavy/20"></div>
             </div>
             
@@ -345,8 +359,8 @@ function renderHome() {
                     ${site.catch}
                 </p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center">
-                    <a href="/works/" class="bg-brandGold text-brandNavy px-8 py-4 font-bold font-en tracking-widest hover:bg-white transition-colors">VIEW WORKS</a>
-                    <a href="/contact/" class="border border-white text-white px-8 py-4 font-bold font-en tracking-widest hover:bg-white hover:text-brandNavy transition-colors">CONTACT US</a>
+                    <a href="${getPath('/works/')}" class="bg-brandGold text-brandNavy px-8 py-4 font-bold font-en tracking-widest hover:bg-white transition-colors">VIEW WORKS</a>
+                    <a href="${getPath('/contact/')}" class="border border-white text-white px-8 py-4 font-bold font-en tracking-widest hover:bg-white hover:text-brandNavy transition-colors">CONTACT US</a>
                 </div>
             </div>
             
@@ -387,7 +401,7 @@ function renderHome() {
                     <div class="md:w-2/3 grid gap-12">
                          <div class="group reveal delay-100 grid md:grid-cols-2 gap-8 items-center">
                             <div class="overflow-hidden bg-gray-100 aspect-[4/3] relative">
-                                <img src="/images/service_survey.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                                <img src="${getPath('/images/service_survey.jpg')}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                             </div>
                             <div>
                                 <div class="text-brandGold font-en font-bold text-sm tracking-widest mb-2">01. SURVEY</div>
@@ -397,7 +411,7 @@ function renderHome() {
                         </div>
                         <div class="group reveal delay-200 grid md:grid-cols-2 gap-8 items-center md:flex-row-reverse">
                             <div class="md:order-2 overflow-hidden bg-gray-100 aspect-[4/3] relative">
-                                <img src="/images/service_compensation.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                                <img src="${getPath('/images/service_compensation.jpg')}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                             </div>
                             <div class="md:order-1">
                                 <div class="text-brandGold font-en font-bold text-sm tracking-widest mb-2">02. COMPENSATION</div>
@@ -451,13 +465,13 @@ function renderHome() {
 
         <section class="relative py-32 bg-brandNavy overflow-hidden">
             <div class="absolute inset-0 z-0">
-                <img src="/images/recruit.jpg" class="w-full h-full object-cover opacity-20">
+                <img src="${getPath('/images/recruit.jpg')}" class="w-full h-full object-cover opacity-20">
                 <div class="absolute inset-0 bg-brandNavy/80"></div>
             </div>
             <div class="container mx-auto px-6 relative z-10 text-center reveal">
                 <h2 class="text-4xl md:text-5xl font-en font-bold text-white mb-6">RECRUIT</h2>
                 <p class="text-gray-300 mb-10 text-lg tracking-wide">確実な成果を積み上げる技術者へ。</p>
-                <a href="/careers/" class="inline-block bg-white text-brandNavy px-10 py-4 font-bold font-en tracking-widest hover:bg-brandGold hover:text-white transition-all duration-300">
+                <a href="${getPath('/careers/')}" class="inline-block bg-white text-brandNavy px-10 py-4 font-bold font-en tracking-widest hover:bg-brandGold hover:text-white transition-all duration-300">
                     JOIN US
                 </a>
             </div>
@@ -482,7 +496,7 @@ function renderWorks() {
         return `
         <div onclick="openWorkModal('${w.id}')" class="reveal cursor-pointer group">
             <div class="overflow-hidden aspect-[4/3] bg-gray-100 relative mb-4">
-                <img src="${w.image}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                <img src="${getPath(w.image)}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
                 <div class="absolute top-4 right-4 bg-white/90 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition duration-300">
                     <i data-lucide="arrow-up-right" class="w-5 h-5 text-brandNavy"></i>
                 </div>
@@ -545,7 +559,7 @@ function renderCareers() {
     container.innerHTML = `
         <div class="relative h-[60vh] bg-brandNavy flex items-center justify-center overflow-hidden">
             <div class="absolute inset-0 opacity-40">
-                 <img src="/images/recruit.jpg" class="w-full h-full object-cover">
+                 <img src="${getPath('/images/recruit.jpg')}" class="w-full h-full object-cover">
             </div>
             <div class="relative z-10 text-center text-white reveal active">
                 <h1 class="text-5xl md:text-7xl font-en font-bold mb-6">CAREERS</h1>
@@ -565,7 +579,7 @@ function renderCareers() {
                 </div>
                  <div class="md:col-span-7 relative">
                     <div class="relative overflow-hidden rounded-sm shadow-2xl group">
-                        <img src="/images/recruit.jpg" class="w-full h-full object-cover">
+                        <img src="${getPath('/images/recruit.jpg')}" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
@@ -585,7 +599,7 @@ function renderCareers() {
                 <div class="relative z-10">
                     <h2 class="text-2xl font-bold mb-4">Entry / Contact</h2>
                     <p class="text-gray-100 mb-8 max-w-lg mx-auto">採用についてのお問い合わせはこちら</p>
-                    <a href="/contact/?type=recruit" class="inline-flex items-center gap-2 bg-blue-600 text-white px-10 py-4 font-bold hover:bg-white hover:text-blue-600 transition duration-300">
+                    <a href="${getPath('/contact/?type=recruit')}" class="inline-flex items-center gap-2 bg-blue-600 text-white px-10 py-4 font-bold hover:bg-white hover:text-blue-600 transition duration-300">
                         応募フォームへ <i data-lucide="arrow-right" class="w-5 h-5"></i>
                     </a>
                 </div>
@@ -723,16 +737,16 @@ function renderSitemap() {
                     <div>
                         <h3 class="text-xl font-bold text-brandNavy mb-6 border-b border-brandGold pb-2 inline-block">MAIN MENU</h3>
                         <ul class="space-y-4">
-                            <li><a href="/" class="font-bold text-brandNavy hover:text-brandGold transition-colors flex items-center gap-2"><i data-lucide="home" class="w-4 h-4"></i> ホーム</a></li>
-                            <li><a href="/works/" class="font-bold text-brandNavy hover:text-brandGold transition-colors flex items-center gap-2"><i data-lucide="briefcase" class="w-4 h-4"></i> 業務実績</a></li>
-                            <li><a href="/careers/" class="font-bold text-brandNavy hover:text-brandGold transition-colors flex items-center gap-2"><i data-lucide="users" class="w-4 h-4"></i> 採用情報</a></li>
+                            <li><a href="${getPath('/')}" class="font-bold text-brandNavy hover:text-brandGold transition-colors flex items-center gap-2"><i data-lucide="home" class="w-4 h-4"></i> ホーム</a></li>
+                            <li><a href="${getPath('/works/')}" class="font-bold text-brandNavy hover:text-brandGold transition-colors flex items-center gap-2"><i data-lucide="briefcase" class="w-4 h-4"></i> 業務実績</a></li>
+                            <li><a href="${getPath('/careers/')}" class="font-bold text-brandNavy hover:text-brandGold transition-colors flex items-center gap-2"><i data-lucide="users" class="w-4 h-4"></i> 採用情報</a></li>
                         </ul>
                     </div>
                      <div>
                         <h3 class="text-xl font-bold text-brandNavy mb-6 border-b border-brandGold pb-2 inline-block">SUPPORT</h3>
                         <ul class="space-y-4">
-                            <li><a href="/contact/" class="font-bold text-brandNavy hover:text-brandGold transition-colors flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> お問い合わせ</a></li>
-                             <li><a href="/privacy/" class="font-bold text-brandNavy hover:text-brandGold transition-colors flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4"></i> プライバシーポリシー</a></li>
+                            <li><a href="${getPath('/contact/')}" class="font-bold text-brandNavy hover:text-brandGold transition-colors flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> お問い合わせ</a></li>
+                             <li><a href="${getPath('/privacy/')}" class="font-bold text-brandNavy hover:text-brandGold transition-colors flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4"></i> プライバシーポリシー</a></li>
                         </ul>
                     </div>
                 </div>
@@ -751,12 +765,12 @@ window.openCareerModal = (id) => {
     if (!role) return;
     const modalContent = document.getElementById('modal-content');
     modalContent.innerHTML = `
-        <div class="h-64 md:h-full bg-gray-100"><img src="/images/recruit.jpg" class="w-full h-full object-cover"></div>
+        <div class="h-64 md:h-full bg-gray-100"><img src="${getPath('/images/recruit.jpg')}" class="w-full h-full object-cover"></div>
         <div class="p-8 md:p-12 overflow-y-auto max-h-[60vh] md:max-h-full">
             <h2 class="text-2xl md:text-3xl font-bold text-brandNavy mb-4">${role.title}</h2>
             <p class="text-gray-600 mb-6">${role.summary}</p>
             <div class="mt-8 pt-8 border-t border-line">
-                 <a href="/contact/?type=recruit" onclick="closeModal()" class="block w-full text-center bg-brandNavy text-white py-4 font-bold tracking-widest hover:bg-brandGold transition-colors">エントリー</a>
+                 <a href="${getPath('/contact/?type=recruit')}" onclick="closeModal()" class="block w-full text-center bg-brandNavy text-white py-4 font-bold tracking-widest hover:bg-brandGold transition-colors">エントリー</a>
             </div>
         </div>
     `;
@@ -771,7 +785,7 @@ window.openWorkModal = (id) => {
     if (!w) return;
     const modalContent = document.getElementById('modal-content');
     modalContent.innerHTML = `
-        <div class="h-64 md:h-full bg-gray-100"><img src="${w.image}" class="w-full h-full object-cover"></div>
+        <div class="h-64 md:h-full bg-gray-100"><img src="${getPath(w.image)}" class="w-full h-full object-cover"></div>
         <div class="p-8 md:p-12 overflow-y-auto max-h-[60vh] md:max-h-full">
             <div class="text-xs font-mono text-gray-400 mb-4">${w.year} / ${w.type === 'survey' ? '測量' : '補償'}</div>
             <h2 class="text-2xl md:text-3xl font-bold text-brandNavy mb-2">${w.title}</h2>
