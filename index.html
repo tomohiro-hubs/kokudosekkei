@@ -1,154 +1,99 @@
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>株式会社国土調査設計事務所 | KOKUDO Survey & Design</title>
-    
-    <!-- Tailwind CSS -->
+    <title>株式会社国土調査設計事務所 | KOKUDO CHOSA SEKKEI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brandNavy: '#0B1F3B',
-                        brandNavyLight: '#153157',
+                        brandNavy: '#0A192F',
                         brandGold: '#C5A059',
-                        paper: '#F8F9FA',
-                        ink: '#1A202C',
-                        muted: '#718096',
+                        brandGray: '#F8F9FA',
                         line: '#E2E8F0',
-                        accentCyan: '#2DD4FF',
+                        ink: '#1A202C',
+                        paper: '#F8F9FA',
+                        accentCyan: '#64FFDA'
                     },
                     fontFamily: {
                         sans: ['"Noto Sans JP"', 'sans-serif'],
-                        en: ['"Montserrat"', 'sans-serif'],
-                        mono: ['"Roboto Mono"', 'monospace'],
+                        en: ['"Montserrat"', 'sans-serif']
                     },
-                    boxShadow: {
-                        'soft': '0 20px 40px -15px rgba(11, 31, 59, 0.1)',
-                        'sharp': '0 0 0 1px rgba(11, 31, 59, 0.05), 0 10px 20px -5px rgba(11, 31, 59, 0.1)',
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'scale-in': 'scale-in 20s ease-in-out infinite alternate',
                     },
-                    transitionTimingFunction: {
-                        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
-                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'scale-in': {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.1)' },
+                        }
+                    }
                 }
             }
         }
     </script>
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <style>
-        /* Base Styles */
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            color: #1A202C;
-            background-color: #F8F9FA;
-            font-feature-settings: "palt";
-            -webkit-font-smoothing: antialiased;
-            letter-spacing: 0.04em;
-        }
-        
-        h1, h2, h3, h4, .font-en {
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 0.02em;
-        }
-
-        /* Utilities */
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        /* Scroll Reveal Animation Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 1s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .delay-100 { transition-delay: 0.1s; }
-        .delay-200 { transition-delay: 0.2s; }
-        .delay-300 { transition-delay: 0.3s; }
-
-        /* Custom Components */
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0%;
-            height: 1px;
-            background-color: #C5A059;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 100%;
-        }
-
-        /* Page Transitions */
-        .page-section {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        .page-section.active {
-            display: block;
-            opacity: 1;
-        }
-
-        /* Glass Header */
-        header.scrolled {
-            background-color: rgba(11, 31, 59, 0.85);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body class="bg-paper text-ink flex flex-col min-h-screen overflow-x-hidden">
 
     <!-- Loading Screen -->
-    <div id="loading-screen" class="fixed inset-0 z-[100] bg-brandNavy flex items-center justify-center transition-transform duration-700 cubic-bezier(0.76, 0, 0.24, 1)">
-        <div class="text-center">
-            <div class="text-white font-en text-3xl font-bold tracking-widest mb-4">KOKUDO</div>
-            <div class="h-0.5 w-0 bg-brandGold mx-auto transition-all duration-700 ease-out" id="loading-bar"></div>
-        </div>
-    </div>
+
 
     <!-- Header -->
-    <header class="fixed top-0 w-full z-50 transition-all duration-300 h-20 flex items-center border-b border-white/10" id="main-header">
+    <header class="fixed top-0 w-full z-50 transition-all duration-300 h-20 flex items-center border-b border-white/10"
+        id="main-header">
         <div class="container mx-auto px-6 h-full flex items-center justify-between">
             <a href="#/" class="flex items-center gap-3 group">
-                <!-- Logo Mark -->
-                <div class="w-8 h-8 bg-brandGold flex items-center justify-center text-brandNavy font-bold font-en text-lg rounded-sm">K</div>
                 <div class="flex flex-col">
-                    <span class="font-bold text-white text-sm tracking-widest group-hover:text-brandGold transition-colors">国土調査設計事務所</span>
+                    <span
+                        class="font-bold text-white text-sm tracking-widest group-hover:text-brandGold transition-colors">株式会社国土調査設計事務所</span>
                     <span class="text-[10px] text-gray-400 font-en tracking-wider uppercase">Survey & Design Firm</span>
                 </div>
             </a>
-            
+
             <!-- Desktop Nav -->
             <div class="hidden md:flex items-center gap-10">
-                <nav class="flex gap-8 text-sm font-en font-medium tracking-wide">
-                    <a href="#/" class="nav-link text-white hover:text-brandGold transition-colors py-1" data-path="/">HOME</a>
-                    <a href="#/works" class="nav-link text-white hover:text-brandGold transition-colors py-1" data-path="/works">WORKS</a>
-                    <a href="#/careers" class="nav-link text-white hover:text-brandGold transition-colors py-1" data-path="/careers">CAREERS</a>
+                <nav class="flex gap-8 text-sm font-sans font-medium tracking-wide">
+                    <a href="#/" class="nav-link text-white hover:text-brandGold transition-colors py-1"
+                        data-path="/">ホーム</a>
+                    <a href="#/works" class="nav-link text-white hover:text-brandGold transition-colors py-1"
+                        data-path="/works">業務実績</a>
+                    <a href="#/careers" class="nav-link text-white hover:text-brandGold transition-colors py-1"
+                        data-path="/careers">採用情報</a>
                 </nav>
-                <a href="#/contact" class="bg-white/10 text-white border border-white/20 px-6 py-2.5 rounded-sm text-xs font-bold font-en tracking-widest hover:bg-brandGold hover:border-brandGold hover:text-brandNavy transition-all duration-300">
-                    CONTACT
-                </a>
+                <div class="flex items-center gap-6">
+                    <a href="#/contact"
+                        class="bg-white/10 text-white border border-white/20 px-6 py-2.5 rounded-sm text-xs font-bold font-sans tracking-wider hover:bg-brandGold hover:border-brandGold hover:text-brandNavy transition-all duration-300">
+                        お問い合わせ
+                    </a>
+                    <div class="flex flex-col items-end">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4 text-brandGold"></i>
+                            <a href="tel:0743-00-0000"
+                                class="text-white font-bold font-mono text-lg leading-none hover:text-brandGold transition-colors">0743-00-0000</a>
+                        </div>
+                        <span class="text-[10px] text-gray-400 font-sans mt-0.5 tracking-tight">※営業電話は固くお断りします</span>
+                    </div>
+                </div>
             </div>
 
             <!-- Mobile Menu Button -->
@@ -159,12 +104,17 @@
     </header>
 
     <!-- Mobile Nav Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-brandNavy z-40 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col pt-24 px-6">
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-brandNavy z-40 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col pt-24 px-6">
         <nav class="flex flex-col gap-6 text-white font-en text-2xl font-bold">
-            <a href="#/" class="mobile-nav-link border-b border-white/10 pb-4">HOME <span class="text-xs font-sans font-normal text-gray-400 block mt-1">トップページ</span></a>
-            <a href="#/works" class="mobile-nav-link border-b border-white/10 pb-4">WORKS <span class="text-xs font-sans font-normal text-gray-400 block mt-1">実績紹介</span></a>
-            <a href="#/careers" class="mobile-nav-link border-b border-white/10 pb-4">CAREERS <span class="text-xs font-sans font-normal text-gray-400 block mt-1">採用情報</span></a>
-            <a href="#/contact" class="mobile-nav-link border-b border-white/10 pb-4 text-brandGold">CONTACT <span class="text-xs font-sans font-normal text-gray-400 block mt-1">お問い合わせ</span></a>
+            <a href="#/" class="mobile-nav-link border-b border-white/10 pb-4">HOME <span
+                    class="text-xs font-sans font-normal text-gray-400 block mt-1">トップページ</span></a>
+            <a href="#/works" class="mobile-nav-link border-b border-white/10 pb-4">WORKS <span
+                    class="text-xs font-sans font-normal text-gray-400 block mt-1">実績紹介</span></a>
+            <a href="#/careers" class="mobile-nav-link border-b border-white/10 pb-4">CAREERS <span
+                    class="text-xs font-sans font-normal text-gray-400 block mt-1">採用情報</span></a>
+            <a href="#/contact" class="mobile-nav-link border-b border-white/10 pb-4 text-brandGold">CONTACT <span
+                    class="text-xs font-sans font-normal text-gray-400 block mt-1">お問い合わせ</span></a>
         </nav>
         <button id="mobile-menu-close" class="absolute top-6 right-6 text-white p-2">
             <i data-lucide="x" class="w-8 h-8"></i>
@@ -178,18 +128,21 @@
         <div id="page-works" class="page-section"></div>
         <div id="page-careers" class="page-section"></div>
         <div id="page-contact" class="page-section"></div>
+        <div id="page-privacy" class="page-section"></div>
+        <div id="page-sitemap" class="page-section"></div>
     </main>
 
     <!-- Footer -->
     <footer class="bg-brandNavy text-gray-400 py-20 border-t border-white/5 relative overflow-hidden">
         <!-- Background Decor -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-brandGold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div
+            class="absolute top-0 right-0 w-96 h-96 bg-brandGold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+        </div>
 
         <div class="container mx-auto px-6 relative z-10">
             <div class="grid md:grid-cols-12 gap-12 mb-16">
                 <div class="md:col-span-4">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-6 h-6 bg-brandGold flex items-center justify-center text-brandNavy font-bold font-en text-sm rounded-sm">K</div>
                         <span class="font-bold text-white text-lg tracking-wider">株式会社国土調査設計事務所</span>
                     </div>
                     <p class="text-sm leading-relaxed mb-6 text-gray-400">
@@ -210,11 +163,13 @@
 
                 <div class="md:col-span-8 grid md:grid-cols-3 gap-8">
                     <div>
-                        <h4 class="text-brandGold font-en font-bold text-xs tracking-widest uppercase mb-6">Registration</h4>
+                        <h4 class="text-brandGold font-en font-bold text-xs tracking-widest uppercase mb-6">Registration
+                        </h4>
                         <ul id="footer-registrations" class="space-y-3 text-sm"></ul>
                     </div>
                     <div>
-                        <h4 class="text-brandGold font-en font-bold text-xs tracking-widest uppercase mb-6">Navigation</h4>
+                        <h4 class="text-brandGold font-en font-bold text-xs tracking-widest uppercase mb-6">Navigation
+                        </h4>
                         <ul class="space-y-3 text-sm">
                             <li><a href="#/" class="hover:text-white transition-colors">トップページ</a></li>
                             <li><a href="#/works" class="hover:text-white transition-colors">業務実績</a></li>
@@ -225,14 +180,15 @@
                     <div>
                         <h4 class="text-brandGold font-en font-bold text-xs tracking-widest uppercase mb-6">Legal</h4>
                         <ul class="space-y-3 text-sm">
-                            <li><a href="#" class="hover:text-white transition-colors">プライバシーポリシー</a></li>
-                            <li><a href="#" class="hover:text-white transition-colors">サイトマップ</a></li>
+                            <li><a href="#/privacy" class="hover:text-white transition-colors">プライバシーポリシー</a></li>
+                            <li><a href="#/sitemap" class="hover:text-white transition-colors">サイトマップ</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
-            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-en text-gray-500">
+
+            <div
+                class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-en text-gray-500">
                 <p>&copy; <span id="footer-year"></span> KOKUDO Survey & Design. All Rights Reserved.</p>
                 <p>Designed for Professional Trust.</p>
             </div>
@@ -240,12 +196,15 @@
     </footer>
 
     <!-- Work Detail Modal -->
-    <div id="work-modal" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300" aria-hidden="true">
+    <div id="work-modal" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300"
+        aria-hidden="true">
         <div class="absolute inset-0 bg-brandNavy/90 backdrop-blur-sm" id="modal-backdrop"></div>
         <div class="fixed inset-0 overflow-y-auto">
             <div class="flex min-h-full items-center justify-center p-4">
-                <div id="modal-panel" class="relative w-full max-w-4xl bg-white shadow-2xl transform scale-95 opacity-0 transition-all duration-300 overflow-hidden">
-                    <button onclick="closeModal()" class="absolute top-4 right-4 z-10 p-2 bg-white/20 hover:bg-black/10 rounded-full transition-colors backdrop-blur-md">
+                <div id="modal-panel"
+                    class="relative w-full max-w-4xl bg-white shadow-2xl transform scale-95 opacity-0 transition-all duration-300 overflow-hidden">
+                    <button onclick="closeModal()"
+                        class="absolute top-4 right-4 z-10 p-2 bg-white/20 hover:bg-black/10 rounded-full transition-colors backdrop-blur-md">
                         <i data-lucide="x" class="w-6 h-6 text-brandNavy"></i>
                     </button>
                     <div id="modal-content" class="grid md:grid-cols-2"></div>
@@ -255,746 +214,19 @@
     </div>
 
     <!-- Data & Application Logic -->
-    <script>
-        // --- Data ---
-        const appData = {
-          "site": {
-            "companyName": "株式会社国土調査設計事務所",
-            "catch": "測量と補償で、公共事業の“確実さ”を支える。",
-            "area": "奈良県中心（近畿対応）",
-            "registrations": [
-              { "label": "測量業登録", "value": "登録番号（確認中）" },
-              { "label": "補償コンサルタント登録", "value": "登録番号（確認中）" }
-            ],
-            "qualified": [
-              { "name": "測量士", "count": 3 }
-            ],
-            "contact": {
-              "tel": "0742-00-0000",
-              "hours": "平日 9:00-18:00",
-              "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfDummyFormID/viewform"
-            }
-          },
-          "services": [
-            {
-              "id": "survey",
-              "title": "測量業務",
-              "enTitle": "Surveying",
-              "summary": "境界・現況の把握を基盤に、説明責任に耐える成果を作成します。",
-              "deliverables": ["基準点測量", "現況平面図作成", "用地測量"]
-            },
-            {
-              "id": "compensation",
-              "title": "補償コンサルタント",
-              "enTitle": "Compensation",
-              "summary": "権利関係・調査の厳密性を担保し、合意形成の前提を整えます。",
-              "deliverables": ["土地調査", "物件調査", "補償額算定"]
-            }
-          ],
-          "works": [
-            {
-              "id": "w-2024-001",
-              "year": 2024,
-              "type": "survey",
-              "area": "奈良市",
-              "client": "奈良県",
-              "title": "一級河川改修に伴う路線測量",
-              "image": "https://www.genspark.ai/api/files/s/G8S4exbC?cache_control=3600",
-              "summary": "河川改修計画の基礎資料として、詳細な現況把握と路線測量を実施。",
-              "details": {
-                "issue": "未整備区間の境界確定と現況把握",
-                "approach": "ドローン測量と地上測量のハイブリッド実施",
-                "deliverables": ["平面縦断図", "横断図", "用地幅杭設置"],
-                "notes": "近隣住民への説明用資料も作成"
-              }
-            },
-            {
-              "id": "w-2024-002",
-              "year": 2024,
-              "type": "compensation",
-              "area": "天理市",
-              "client": "国土交通省",
-              "title": "国道バイパス工事に伴う物件調査",
-              "image": "https://www.genspark.ai/api/files/s/BxCjiYaq?cache_control=3600",
-              "summary": "木造家屋および工作物の移転料算定のための詳細調査。",
-              "details": {
-                "issue": "多数の権利者が関わる複雑な物件調査",
-                "approach": "全棟立会いによる詳細記録と図面化",
-                "deliverables": ["物件調書", "移転工法検討書", "補償算定書"],
-                "notes": "プライバシーに配慮した調査実施"
-              }
-            },
-            {
-              "id": "w-2023-001",
-              "year": 2023,
-              "type": "survey",
-              "area": "橿原市",
-              "client": "橿原市",
-              "title": "都市計画道路整備に伴う用地測量",
-              "image": "https://www.genspark.ai/api/files/s/G8S4exbC?cache_control=3600",
-              "summary": "道路拡幅に必要な用地取得のための境界確定および分筆登記測量。",
-              "details": {
-                "issue": "古い公図と現況の不整合調整",
-                "approach": "徹底した資料調査と地元精通者への聞き取り",
-                "deliverables": ["用地実測図", "地積測量図", "境界確認書"],
-                "notes": "早期着工に向けた迅速な成果納品"
-              }
-            },
-            {
-              "id": "w-2023-002",
-              "year": 2023,
-              "type": "compensation",
-              "area": "桜井市",
-              "client": "奈良県",
-              "title": "河川改修に伴う事業損失調査",
-              "image": "https://www.genspark.ai/api/files/s/BxCjiYaq?cache_control=3600",
-              "summary": "工事振動等による近隣家屋への事前事後調査。",
-              "details": {
-                "issue": "工事影響範囲の特定と現状証拠保全",
-                "approach": "写真撮影と傾斜測定による客観的記録",
-                "deliverables": ["事前調査報告書", "事後調査報告書", "写真帳"],
-                "notes": "住民不安払拭のための丁寧な説明"
-              }
-            },
-            {
-              "id": "w-2022-001",
-              "year": 2022,
-              "type": "survey",
-              "area": "五條市",
-              "client": "五條市",
-              "title": "防災公園整備に伴う基準点測量",
-              "image": "https://www.genspark.ai/api/files/s/G8S4exbC?cache_control=3600",
-              "summary": "広域的な公園整備計画の基準となる4級基準点の設置。",
-              "details": {
-                "issue": "高低差のある山間部での精度確保",
-                "approach": "GNSS測量機の活用による効率化",
-                "deliverables": ["基準点網図", "成果簿", "点の記"],
-                "notes": "後続の工事測量でも使用可能な恒久標識設置"
-              }
-            }
-          ],
-          "careers": {
-            "roles": [
-              {
-                "id": "role-surveyor",
-                "title": "測量技術者",
-                "summary": "現場計測と成果整理を通じ、公共事業の根拠をつくる。",
-                "requirements": ["普通自動車免許（AT限定可）", "測量士補あれば尚可"]
-              },
-              {
-                "id": "role-comp",
-                "title": "補償調査スタッフ",
-                "summary": "調査・資料作成を通じ、合意形成の前提を整える。",
-                "requirements": ["PC基本操作（Word, Excel）", "未経験歓迎"]
-              }
-            ],
-            "numbers": [
-              { "label": "測量士", "value": "3名" },
-              { "label": "年間休日", "value": "120日" },
-              { "label": "平均残業", "value": "確認中" }
-            ]
-          }
-        };
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+        class="fixed bottom-24 md:bottom-8 right-8 bg-brandGold text-brandNavy p-3 rounded-full shadow-lg z-50 opacity-0 invisible transition-all duration-300 hover:bg-white hover:scale-110">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
 
-        // --- State ---
-        let bookmarkedWorks = JSON.parse(localStorage.getItem('bookmarkedWorks') || '[]');
-        let recentWorks = JSON.parse(localStorage.getItem('recentWorks') || '[]');
-        let currentFilter = 'all';
-        let bookmarkFilter = false;
+    <!-- Mobile Fixed CTA -->
+    <a href="#/contact"
+        class="fixed bottom-0 left-0 w-full bg-brandNavy text-white text-center py-4 font-bold text-lg z-[60] md:hidden shadow-[0_-4px_10px_rgba(0,0,0,0.1)] flex items-center justify-center gap-2 border-t border-brandGold">
+        <i data-lucide="mail" class="w-5 h-5"></i> 問い合わせる
+    </a>
 
-        // --- Core ---
-        function initApp() {
-            // Loading Animation
-            const loader = document.getElementById('loading-screen');
-            const bar = document.getElementById('loading-bar');
-            
-            // Start Loading
-            setTimeout(() => bar.style.width = '100%', 100);
-            
-            // Finish Loading
-            setTimeout(() => {
-                loader.style.transform = 'translateY(-100%)';
-                renderCommonElements();
-                handleRoute();
-                initScrollReveal();
-            }, 800);
-        }
-
-        function renderCommonElements() {
-            document.getElementById('footer-area').textContent = appData.site.area;
-            document.getElementById('footer-tel').textContent = appData.site.contact.tel;
-            document.getElementById('footer-year').textContent = new Date().getFullYear();
-
-            const regList = document.getElementById('footer-registrations');
-            regList.innerHTML = '';
-            appData.site.registrations.forEach(r => {
-                const li = document.createElement('li');
-                li.className = 'text-gray-400';
-                li.innerHTML = `${r.label} <span class="text-gray-500 text-xs ml-1 block">${r.value}</span>`;
-                regList.appendChild(li);
-            });
-        }
-
-        // --- Routing ---
-        window.addEventListener('hashchange', () => { handleRoute(); });
-        
-        function handleRoute() {
-            const hash = window.location.hash || '#/';
-            const path = hash.split('?')[0].replace('#', '') || '/';
-            
-            window.scrollTo(0, 0);
-
-            // Hide all pages
-            document.querySelectorAll('.page-section').forEach(el => {
-                el.classList.remove('active');
-            });
-            
-            // Nav Active State
-            document.querySelectorAll('.nav-link').forEach(el => {
-                el.classList.remove('active', 'text-brandGold');
-                if (el.getAttribute('data-path') === path) {
-                    el.classList.add('active', 'text-brandGold');
-                }
-            });
-
-            // Render Page
-            if (path === '/' || path === '') {
-                renderHome();
-                document.getElementById('page-home').classList.add('active');
-            } else if (path === '/works') {
-                renderWorks();
-                document.getElementById('page-works').classList.add('active');
-            } else if (path === '/careers') {
-                renderCareers();
-                document.getElementById('page-careers').classList.add('active');
-            } else if (path.startsWith('/contact')) {
-                renderContact();
-                document.getElementById('page-contact').classList.add('active');
-            }
-
-            if(window.lucide) lucide.createIcons();
-            
-            // Re-init scroll reveal for new content
-            setTimeout(initScrollReveal, 100);
-        }
-
-        // --- Scroll Reveal ---
-        function initScrollReveal() {
-            const reveals = document.querySelectorAll('.reveal');
-            
-            const revealOnScroll = () => {
-                const windowHeight = window.innerHeight;
-                const elementVisible = 100;
-                
-                reveals.forEach(reveal => {
-                    const elementTop = reveal.getBoundingClientRect().top;
-                    if (elementTop < windowHeight - elementVisible) {
-                        reveal.classList.add('active');
-                    }
-                });
-            };
-            
-            window.removeEventListener('scroll', revealOnScroll);
-            window.addEventListener('scroll', revealOnScroll);
-            revealOnScroll(); // Trigger once
-        }
-
-        // --- Page Renderers ---
-
-        function renderHome() {
-            const container = document.getElementById('page-home');
-            const { site, services, works } = appData;
-
-            // Works Preview
-            const worksHtml = works.slice(0, 3).map((w, index) => `
-                <a href="#/works" class="reveal delay-${index * 100} group relative block h-80 overflow-hidden bg-gray-100">
-                    <img src="${w.image}" alt="${w.title}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
-                    <div class="absolute inset-0 bg-brandNavy/40 transition duration-500 group-hover:bg-brandNavy/20"></div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 text-white">
-                        <div class="text-xs font-mono mb-2 opacity-80">${w.year} / ${w.type === 'survey' ? 'SURVEY' : 'COMPENSATION'}</div>
-                        <h3 class="text-xl font-bold font-sans leading-snug group-hover:underline decoration-brandGold underline-offset-4">${w.title}</h3>
-                    </div>
-                </a>
-            `).join('');
-
-            container.innerHTML = `
-                <!-- Hero Section -->
-                <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-                    <div class="absolute inset-0 z-0">
-                        <img src="https://www.genspark.ai/api/files/s/koeOAaLA?cache_control=3600" class="w-full h-full object-cover animate-[scale-in_20s_infinite_alternate]" style="animation: scale-in 30s linear infinite alternate;">
-                        <div class="absolute inset-0 bg-gradient-to-r from-brandNavy/80 via-brandNavy/40 to-brandNavy/20"></div>
-                    </div>
-                    
-                    <div class="relative z-10 text-center text-white container mx-auto px-4 reveal active">
-                        <p class="font-en text-brandGold tracking-[0.2em] mb-4 text-sm md:text-base font-bold">PROFESSIONAL SURVEY & DESIGN</p>
-                        <h1 class="text-4xl md:text-7xl font-bold font-sans mb-8 leading-tight">
-                            測量と補償で、<br>
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">“確実さ”</span>を支える。
-                        </h1>
-                        <p class="text-gray-300 max-w-xl mx-auto mb-10 text-sm md:text-base leading-relaxed tracking-wide">
-                            ${site.catch}<br>
-                            技術と誠実さで、社会基盤の未来を描く。
-                        </p>
-                        <div class="flex flex-col md:flex-row gap-4 justify-center">
-                            <a href="#/works" class="bg-brandGold text-brandNavy px-8 py-4 font-bold font-en tracking-widest hover:bg-white transition-colors">VIEW WORKS</a>
-                            <a href="#/contact" class="border border-white text-white px-8 py-4 font-bold font-en tracking-widest hover:bg-white hover:text-brandNavy transition-colors">CONTACT US</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Scroll Down Indicator -->
-                    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-                        <span class="text-[10px] text-white/50 font-en tracking-widest">SCROLL</span>
-                        <div class="w-[1px] h-12 bg-white/30"></div>
-                    </div>
-                </section>
-
-                <!-- Trust Section -->
-                <div class="bg-white border-b border-line py-8">
-                    <div class="container mx-auto px-4 flex flex-wrap justify-center gap-x-12 gap-y-4 text-sm text-gray-500 font-en tracking-wide reveal">
-                        ${site.registrations.map(r => `
-                            <div class="flex items-center gap-3">
-                                <i data-lucide="award" class="text-brandGold w-5 h-5"></i>
-                                <span class="font-bold text-brandNavy font-sans">${r.label}</span>
-                            </div>
-                        `).join('')}
-                        <div class="flex items-center gap-3">
-                             <i data-lucide="users" class="text-brandGold w-5 h-5"></i>
-                            <span class="font-bold text-brandNavy font-sans">測量士 ${site.qualified[0].count}名在籍</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- About / Service Section -->
-                <section class="py-24 md:py-32 bg-white">
-                    <div class="container mx-auto px-6">
-                        <div class="flex flex-col md:flex-row gap-16 items-start">
-                            <div class="md:w-1/3 reveal">
-                                <h2 class="text-4xl md:text-5xl font-en font-bold text-brandNavy mb-6">SERVICE</h2>
-                                <div class="w-16 h-1 bg-brandGold mb-8"></div>
-                                <p class="text-ink leading-loose text-justify">
-                                    道路や河川、都市基盤。私たちの生活を支えるインフラは、正確な「測量」と、円滑な事業推進のための「補償」から始まります。<br><br>
-                                    最新技術と豊富な実績で、プロジェクトの根幹を支える信頼性の高いデータを提供します。
-                                </p>
-                            </div>
-                            
-                            <div class="md:w-2/3 grid gap-12">
-                                <!-- Service 1 -->
-                                <div class="group reveal delay-100 grid md:grid-cols-2 gap-8 items-center">
-                                    <div class="overflow-hidden bg-gray-100 aspect-[4/3] relative">
-                                        <img src="https://www.genspark.ai/api/files/s/YxLIlbLK?cache_control=3600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                                    </div>
-                                    <div>
-                                        <div class="text-brandGold font-en font-bold text-sm tracking-widest mb-2">01. SURVEY</div>
-                                        <h3 class="text-2xl font-bold text-brandNavy mb-4">測量・調査</h3>
-                                        <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                                            基準点測量から用地測量まで、最新の機器と技術を駆使して高精度な成果を作成します。
-                                        </p>
-                                        <ul class="space-y-2 text-sm text-brandNavy font-medium">
-                                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brandGold"></span> 基準点測量 / 応用測量</li>
-                                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brandGold"></span> 地形測量 / 用地測量</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
-                                <!-- Service 2 -->
-                                <div class="group reveal delay-200 grid md:grid-cols-2 gap-8 items-center md:flex-row-reverse">
-                                    <div class="md:order-2 overflow-hidden bg-gray-100 aspect-[4/3] relative">
-                                        <img src="https://www.genspark.ai/api/files/s/cYHnP59t?cache_control=3600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                                    </div>
-                                    <div class="md:order-1">
-                                        <div class="text-brandGold font-en font-bold text-sm tracking-widest mb-2">02. COMPENSATION</div>
-                                        <h3 class="text-2xl font-bold text-brandNavy mb-4">補償コンサルタント</h3>
-                                        <p class="text-gray-500 text-sm leading-relaxed mb-6">
-                                            公共事業に伴う損失補償や権利調査を行い、事業の円滑な進行と合意形成をサポートします。
-                                        </p>
-                                        <ul class="space-y-2 text-sm text-brandNavy font-medium">
-                                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brandGold"></span> 土地調査 / 物件調査</li>
-                                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brandGold"></span> 補償額算定</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Works Teaser -->
-                <section class="py-24 bg-paper">
-                    <div class="container mx-auto px-6">
-                        <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
-                            <div>
-                                <h2 class="text-4xl md:text-5xl font-en font-bold text-brandNavy mb-4">WORKS</h2>
-                                <p class="text-gray-500">最新の実績事例</p>
-                            </div>
-                            <a href="#/works" class="group flex items-center gap-2 text-brandNavy font-en font-bold tracking-widest hover:text-brandGold transition-colors">
-                                VIEW ALL <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-2 transition-transform"></i>
-                            </a>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-3 gap-1">
-                            ${worksHtml}
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Company Info -->
-                <section class="py-24 bg-white">
-                    <div class="container mx-auto px-6 max-w-4xl">
-                        <div class="text-center mb-16 reveal">
-                            <h2 class="text-3xl font-en font-bold text-brandNavy mb-4">COMPANY</h2>
-                            <div class="w-12 h-1 bg-brandGold mx-auto"></div>
-                        </div>
-                        
-                        <div class="reveal delay-100">
-                            <dl class="grid md:grid-cols-12 border-t border-line">
-                                <div class="md:col-span-4 py-6 font-bold text-brandNavy">会社名</div>
-                                <div class="md:col-span-8 py-6 border-b border-line md:border-b-0 md:border-t-0 text-gray-600">${site.companyName}</div>
-                                
-                                <div class="md:col-span-12 h-[1px] bg-line hidden md:block"></div>
-
-                                <div class="md:col-span-4 py-6 font-bold text-brandNavy">所在地</div>
-                                <div class="md:col-span-8 py-6 border-b border-line md:border-b-0 text-gray-600">
-                                    〒630-0000<br>${site.area}
-                                </div>
-                                
-                                <div class="md:col-span-12 h-[1px] bg-line hidden md:block"></div>
-
-                                <div class="md:col-span-4 py-6 font-bold text-brandNavy">登録</div>
-                                <div class="md:col-span-8 py-6 border-b border-line md:border-b-0 text-gray-600">
-                                    ${site.registrations.map(r => `<div>${r.label} ${r.value}</div>`).join('')}
-                                </div>
-                            </dl>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Recruit CTA -->
-                <section class="relative py-32 bg-brandNavy overflow-hidden">
-                    <div class="absolute inset-0 z-0">
-                        <img src="https://www.genspark.ai/api/files/s/OfQtFkns?cache_control=3600" class="w-full h-full object-cover opacity-20">
-                        <div class="absolute inset-0 bg-brandNavy/80"></div>
-                    </div>
-                    <div class="container mx-auto px-6 relative z-10 text-center reveal">
-                        <h2 class="text-4xl md:text-5xl font-en font-bold text-white mb-6">RECRUIT</h2>
-                        <p class="text-gray-300 mb-10 text-lg tracking-wide">確実な成果を積み上げる技術者へ。</p>
-                        <a href="#/careers" class="inline-block bg-white text-brandNavy px-10 py-4 font-bold font-en tracking-widest hover:bg-brandGold hover:text-white transition-all duration-300">
-                            JOIN US
-                        </a>
-                    </div>
-                </section>
-            `;
-        }
-
-        function renderWorks() {
-            const container = document.getElementById('page-works');
-            
-            // Filter
-            const filteredWorks = appData.works.filter(w => {
-                if (bookmarkFilter && !bookmarkedWorks.includes(w.id)) return false;
-                if (currentFilter === 'all') return true;
-                return w.type === currentFilter;
-            });
-
-            // Grid HTML
-            const gridHtml = filteredWorks.map(w => {
-                const isBookmarked = bookmarkedWorks.includes(w.id);
-                return `
-                <div onclick="openWorkModal('${w.id}')" class="reveal cursor-pointer group">
-                    <div class="overflow-hidden aspect-[4/3] bg-gray-100 relative mb-4">
-                        <img src="${w.image}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur p-2 rounded-full opacity-0 group-hover:opacity-100 transition duration-300">
-                            <i data-lucide="arrow-up-right" class="w-5 h-5 text-brandNavy"></i>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-mono text-gray-400">${w.year}</span>
-                        <span class="text-xs font-bold tracking-wider text-brandGold uppercase">${w.type === 'survey' ? '測量' : '補償'}</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-brandNavy leading-snug group-hover:text-blue-600 transition-colors">${w.title}</h3>
-                </div>
-            `}).join('');
-
-            container.innerHTML = `
-                <div class="pt-32 pb-20 container mx-auto px-6 min-h-screen">
-                    <div class="mb-16 reveal">
-                        <h1 class="text-5xl md:text-6xl font-en font-bold text-brandNavy mb-6">WORKS</h1>
-                        <div class="flex flex-wrap gap-8 border-b border-line pb-4 font-en text-sm font-bold tracking-widest">
-                            <button onclick="setFilter('all')" class="transition-colors ${currentFilter === 'all' ? 'text-brandNavy' : 'text-gray-400 hover:text-brandNavy'}">すべて</button>
-                            <button onclick="setFilter('survey')" class="transition-colors ${currentFilter === 'survey' ? 'text-brandNavy' : 'text-gray-400 hover:text-brandNavy'}">測量</button>
-                            <button onclick="setFilter('compensation')" class="transition-colors ${currentFilter === 'compensation' ? 'text-brandNavy' : 'text-gray-400 hover:text-brandNavy'}">補償</button>
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-                        ${gridHtml}
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderCareers() {
-            const container = document.getElementById('page-careers');
-            const { careers, site } = appData;
-
-            const rolesHtml = careers.roles.map(role => `
-                <div class="reveal bg-white p-10 border border-line hover:border-brandNavy transition duration-500 group">
-                    <h3 class="text-2xl font-bold text-brandNavy mb-4 group-hover:text-brandGold transition-colors">${role.title}</h3>
-                    <p class="text-gray-600 mb-8 leading-relaxed">${role.summary}</p>
-                    <div class="space-y-4">
-                        <div class="text-xs font-en font-bold text-gray-400 tracking-widest uppercase">Requirements</div>
-                        <ul class="space-y-2 text-sm text-brandNavy">
-                            ${role.requirements.map(r => `<li class="flex items-center gap-2"><span class="w-1 h-1 bg-brandNavy rounded-full"></span> ${r}</li>`).join('')}
-                        </ul>
-                    </div>
-                </div>
-            `).join('');
-
-            container.innerHTML = `
-                <!-- Hero -->
-                <div class="relative h-[60vh] bg-brandNavy flex items-center justify-center overflow-hidden">
-                    <div class="absolute inset-0 opacity-40">
-                         <img src="https://www.genspark.ai/api/files/s/OfQtFkns?cache_control=3600" class="w-full h-full object-cover">
-                    </div>
-                    <div class="relative z-10 text-center text-white reveal active">
-                        <h1 class="text-5xl md:text-7xl font-en font-bold mb-6">CAREERS</h1>
-                        <p class="text-lg tracking-widest">未来を測る、仲間を募集。</p>
-                    </div>
-                </div>
-
-                <div class="container mx-auto px-6 py-24">
-                    <!-- Message & Image (Fixed) -->
-                    <div class="grid md:grid-cols-12 gap-12 items-center mb-24 reveal">
-                        <div class="md:col-span-5">
-                            <div class="text-brandGold font-en font-bold text-sm tracking-widest mb-4">OUR MISSION</div>
-                            <h2 class="text-3xl md:text-4xl font-bold text-brandNavy mb-8 leading-tight">
-                                公共事業の最前線で<br>
-                                技術を磨く。
-                            </h2>
-                            <p class="text-gray-600 leading-loose mb-8 text-justify">
-                                私たちの成果物は、地図に残り、社会インフラの基礎となります。<br>
-                                正確さと誠実さが求められる現場で、プロフェッショナルとしてのキャリアを築きませんか。<br>
-                                最新の技術と、ベテランの知恵が融合する環境で、あなたの可能性を広げてください。
-                            </p>
-                        </div>
-                        <div class="md:col-span-7 relative">
-                            <!-- Image -->
-                            <div class="relative overflow-hidden rounded-sm shadow-2xl group">
-                                <img src="https://www.genspark.ai/api/files/s/OfQtFkns?cache_control=3600" alt="現場での打ち合わせ" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
-                                <div class="absolute inset-0 bg-brandNavy/10 group-hover:bg-transparent transition duration-500"></div>
-                            </div>
-                            <!-- Decorative Box -->
-                            <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-line/50 -z-10 rounded-sm"></div>
-                            <div class="absolute -top-6 -right-6 w-24 h-24 bg-brandGold/20 -z-10 rounded-full blur-xl"></div>
-                        </div>
-                    </div>
-
-                    <!-- Statistics Bar (Fixed) -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-y border-line mb-24 reveal delay-100">
-                        <div class="text-center group">
-                            <div class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Qualified</div>
-                            <div class="text-4xl font-en font-bold text-brandNavy group-hover:text-brandGold transition-colors">${site.qualified[0].count}<span class="text-sm font-sans font-normal text-gray-500 ml-1">名</span></div>
-                            <div class="text-xs text-brandNavy mt-1">測量士</div>
-                        </div>
-                        <div class="text-center group border-l border-line">
-                            <div class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Holidays</div>
-                            <div class="text-4xl font-en font-bold text-brandNavy group-hover:text-brandGold transition-colors">120<span class="text-sm font-sans font-normal text-gray-500 ml-1">日</span></div>
-                            <div class="text-xs text-brandNavy mt-1">年間休日</div>
-                        </div>
-                        <div class="text-center group border-l border-line">
-                            <div class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Established</div>
-                            <div class="text-4xl font-en font-bold text-brandNavy group-hover:text-brandGold transition-colors">40<span class="text-sm font-sans font-normal text-gray-500 ml-1">年</span></div>
-                            <div class="text-xs text-brandNavy mt-1">創業</div>
-                        </div>
-                        <div class="text-center group border-l border-line">
-                            <div class="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Location</div>
-                            <div class="text-4xl font-en font-bold text-brandNavy group-hover:text-brandGold transition-colors">NARA</div>
-                            <div class="text-xs text-brandNavy mt-1">奈良県中心</div>
-                        </div>
-                    </div>
-
-                    <div class="mb-24">
-                        <h2 class="text-2xl font-en font-bold text-brandNavy mb-10 tracking-widest">OPEN POSITIONS</h2>
-                        <div class="grid md:grid-cols-2 gap-8">
-                            ${rolesHtml}
-                        </div>
-                    </div>
-
-                    <div class="relative bg-brandNavy text-white p-8 md:p-16 rounded-sm text-center shadow-xl overflow-hidden group reveal">
-                        <!-- Background Image & Base Overlay -->
-                        <div class="absolute inset-0 z-0">
-                            <img src="https://www.genspark.ai/api/files/s/koeOAaLA?cache_control=3600" alt="背景" class="w-full h-full object-cover group-hover:scale-105 transition duration-1000">
-                            <!-- 写真が見えるように薄めのオーバーレイ (50%) -->
-                            <div class="absolute inset-0 bg-brandNavy/50 transition duration-500"></div>
-                        </div>
-                        
-                        <!-- Hover Animation Overlay (左から右へ色が広がる：明るいシアン) -->
-                        <div class="absolute inset-0 z-0 bg-accentCyan/30 transform scale-x-0 group-hover:scale-x-100 transition duration-700 origin-left"></div>
-                        
-                        <div class="relative z-10">
-                            <h2 class="text-2xl font-bold mb-4 drop-shadow-md">Entry / Contact</h2>
-                            <p class="text-gray-100 mb-8 text-sm max-w-lg mx-auto leading-relaxed drop-shadow-md">
-                                経験・未経験は問いません。面接というより、まずは相互理解の場としてお話ししましょう。<br>
-                                下記フォームより「採用について」を選択してご連絡ください。
-                            </p>
-                            <a href="#/contact?type=recruit" class="inline-flex items-center gap-2 bg-blue-600 text-white px-10 py-4 font-bold hover:bg-white hover:text-blue-600 transition duration-300 shadow-lg border border-transparent hover:border-blue-600">
-                                応募フォームへ <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderContact() {
-            const container = document.getElementById('page-contact');
-            const { site } = appData;
-            
-            const params = new URLSearchParams(window.location.hash.split('?')[1]);
-            let currentType = params.get('type') || 'biz';
-
-            container.innerHTML = `
-                <div class="pt-32 pb-24 container mx-auto px-6 min-h-screen max-w-4xl">
-                    <div class="mb-16 reveal text-center">
-                        <h1 class="text-4xl md:text-5xl font-en font-bold text-brandNavy mb-6">CONTACT</h1>
-                        <p class="text-gray-500">お問い合わせ</p>
-                    </div>
-
-                    <div class="bg-white border border-line p-8 md:p-12 reveal delay-100">
-                        <div class="grid md:grid-cols-2 gap-12 mb-12">
-                            <div>
-                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">INQUIRY TYPE</label>
-                                <div class="space-y-3">
-                                    <button onclick="updateContactType('biz')" class="w-full text-left p-4 border transition-all duration-300 ${currentType === 'biz' ? 'border-brandNavy bg-brandNavy text-white' : 'border-line hover:border-brandNavy'}">
-                                        業務のご相談
-                                    </button>
-                                    <button onclick="updateContactType('quote')" class="w-full text-left p-4 border transition-all duration-300 ${currentType === 'quote' ? 'border-brandNavy bg-brandNavy text-white' : 'border-line hover:border-brandNavy'}">
-                                        お見積り依頼
-                                    </button>
-                                    <button onclick="updateContactType('recruit')" class="w-full text-left p-4 border transition-all duration-300 ${currentType === 'recruit' ? 'border-brandNavy bg-brandNavy text-white' : 'border-line hover:border-brandNavy'}">
-                                        採用について
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="flex flex-col justify-center">
-                                <div class="bg-gray-50 p-8 h-full flex flex-col justify-center text-center">
-                                    <div class="text-brandGold mb-4"><i data-lucide="phone" class="w-8 h-8 mx-auto"></i></div>
-                                    <div class="text-2xl font-bold text-brandNavy font-mono mb-2">${site.contact.tel}</div>
-                                    <div class="text-xs text-gray-400">${site.contact.hours}</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="text-center pt-8 border-t border-line">
-                            <a href="${site.contact.formUrl}" target="_blank" class="inline-flex items-center gap-3 bg-brandNavy text-white px-10 py-5 font-bold font-en tracking-widest hover:bg-brandGold transition-colors group">
-                                OPEN FORM <i data-lucide="external-link" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                            </a>
-                            <p class="text-xs text-gray-400 mt-4">外部フォーム（Google Forms）へ移動します</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // --- Logic ---
-        window.setFilter = (type) => {
-            currentFilter = type;
-            renderWorks();
-        };
-
-        window.openWorkModal = (id) => {
-            const w = appData.works.find(i => i.id === id);
-            if (!w) return;
-
-            const modalContent = document.getElementById('modal-content');
-            modalContent.innerHTML = `
-                <div class="h-64 md:h-full bg-gray-100">
-                    <img src="${w.image}" class="w-full h-full object-cover">
-                </div>
-                <div class="p-8 md:p-12 overflow-y-auto max-h-[60vh] md:max-h-full">
-                    <div class="text-xs font-mono text-gray-400 mb-4">${w.year} / ${w.type === 'survey' ? '測量' : '補償'}</div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-brandNavy mb-2">${w.title}</h2>
-                    <p class="text-sm text-gray-500 mb-8 border-b border-line pb-8">${w.client}</p>
-                    
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-xs font-bold text-brandGold uppercase tracking-widest mb-3">SUMMARY</h4>
-                            <p class="text-ink leading-relaxed">${w.summary}</p>
-                        </div>
-                        ${w.details ? `
-                        <div>
-                            <h4 class="text-xs font-bold text-brandGold uppercase tracking-widest mb-3">DETAILS</h4>
-                            <div class="grid gap-6">
-                                <div>
-                                    <span class="text-xs font-bold text-brandNavy block mb-1">課題</span>
-                                    <p class="text-sm text-gray-600">${w.details.issue}</p>
-                                </div>
-                                <div>
-                                    <span class="text-xs font-bold text-brandNavy block mb-1">アプローチ</span>
-                                    <p class="text-sm text-gray-600">${w.details.approach}</p>
-                                </div>
-                            </div>
-                        </div>
-                        ` : ''}
-                    </div>
-                </div>
-            `;
-            
-            const modal = document.getElementById('work-modal');
-            const panel = document.getElementById('modal-panel');
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                panel.classList.remove('scale-95', 'opacity-0');
-            }, 10);
-            
-            if(window.lucide) lucide.createIcons();
-        };
-
-        window.closeModal = () => {
-            const modal = document.getElementById('work-modal');
-            const panel = document.getElementById('modal-panel');
-            modal.classList.add('opacity-0');
-            panel.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-        };
-
-        window.updateContactType = (type) => {
-            window.location.hash = `#/contact?type=${type}`;
-            renderContact();
-            if(window.lucide) lucide.createIcons();
-        };
-        
-        // Header Scroll
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile Menu
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const menuClose = document.getElementById('mobile-menu-close');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        function toggleMenu() {
-            mobileMenu.classList.toggle('translate-x-full');
-        }
-        
-        menuBtn.addEventListener('click', toggleMenu);
-        menuClose.addEventListener('click', toggleMenu);
-        
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', toggleMenu);
-        });
-
-        // Init
-        window.onload = initApp;
-
-    </script>
+    <script src="./js/script.js"></script>
 </body>
+
 </html>

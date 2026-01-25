@@ -1,0 +1,106 @@
+/* Base Styles */
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #1A202C;
+    background-color: #F8F9FA;
+    font-feature-settings: "palt";
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.04em;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-en {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.02em;
+}
+
+/* Utilities */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Scroll Reveal Animation Classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-100 {
+    transition-delay: 0.1s;
+}
+
+.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.delay-300 {
+    transition-delay: 0.3s;
+}
+
+/* Custom Components */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background-color: #C5A059;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Page Transitions */
+.page-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.page-section.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Glass Header */
+header {
+    transition: all 0.3s ease;
+}
+
+header.header-transparent {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+header.scrolled {
+    background-color: rgba(10, 25, 47, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-bottom-color: transparent;
+}
+
+header.hide-header {
+    transform: translateY(-100%);
+}
