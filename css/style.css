@@ -72,6 +72,35 @@ h4,
     width: 100%;
 }
 
+/* Sweep Animation Button */
+.btn-sweep {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: color 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-sweep::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #FFFFFF;
+    z-index: -1;
+    transition: width 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-sweep:hover {
+    color: #2563EB !important;
+    /* blue-600 */
+}
+
+.btn-sweep:hover::before {
+    width: 100%;
+}
+
 /* Page Transitions */
 .page-section {
     display: none;

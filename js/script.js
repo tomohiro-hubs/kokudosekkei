@@ -9,6 +9,11 @@ const appData = {
         "companyName": "株式会社国土調査設計事務所",
         "catch": "測量と補償で、公共事業の“確実さ”を支える。",
         "area": "奈良県大和郡山市小泉町187-1",
+        "founded": "1971年7月6日",
+        "capital": "3,000,000円",
+        "license": "登録第00000号（仮）",
+        "ceo": "吉田 友彦",
+        "business": ["調査・測量業務", "設計業務"],
         "registrations": [
             { "label": "測量業登録", "value": "登録番号（確認中）" },
             { "label": "補償コンサルタント登録", "value": "登録番号（確認中）" }
@@ -47,14 +52,12 @@ const appData = {
             "type": "survey",
             "area": "奈良市",
             "client": "奈良県",
-            "title": "一級河川改修に伴う路線測量",
+            "title": "一級河川改修に伴う課題解決型路線測量",
             "image": "/images/work_survey.jpg",
-            "summary": "河川改修計画の基礎資料として、詳細な現況把握と路線測量を実施。",
+            "summary": "河川改修計画の基礎資料として、広範囲な現況把握と高精度な路線測量を実施。複雑な地形条件下での設計精度向上に貢献しました。",
             "details": {
-                "issue": "未整備区間の境界確定と現況把握",
-                "approach": "ドローン測量と地上測量のハイブリッド実施",
-                "deliverables": ["平面縦断図", "横断図", "用地幅杭設置"],
-                "notes": "近隣住民への説明用資料も作成"
+                "point": "植生が密集し地上測量が困難な区域において、UAVレーザー観測を採用。最新技術により、短期間かつ高精度な3次元地形データの取得を実現しました。",
+                "equipment": ["UAVレーザー測量機", "GNSS受信機"]
             }
         },
         {
@@ -63,14 +66,12 @@ const appData = {
             "type": "compensation",
             "area": "天理市",
             "client": "国土交通省",
-            "title": "国道バイパス工事に伴う物件調査",
+            "title": "高規格道路バイパス整備に伴う建物等移転補償調査",
             "image": "/images/work_compensation.jpg",
-            "summary": "木造家屋および工作物の移転料算定のための詳細調査。",
+            "summary": "大規模な道路整備計画において、移転対象となる多数の建物や工作物の権利関係・評価額を厳密に調査。円滑な用地取得をサポートしました。",
             "details": {
-                "issue": "多数の権利者が関わる複雑な物件調査",
-                "approach": "全棟立会いによる詳細記録と図面化",
-                "deliverables": ["物件調書", "移転工法検討書", "補償算定書"],
-                "notes": "プライバシーに配慮した調査実施"
+                "point": "店舗や工場を含む多種多様な物件に対し、一級建築士を含む専門チームが精緻な調査を実施。透明性の高い算定により、円滑な合意形成の基盤を構築しました。",
+                "equipment": ["レーザー距離計", "CADシステム"]
             }
         },
         {
@@ -79,14 +80,12 @@ const appData = {
             "type": "survey",
             "area": "橿原市",
             "client": "橿原市",
-            "title": "都市計画道路整備に伴う用地測量",
+            "title": "都市計画道路（駅前線）整備に伴う用地測量",
             "image": "/images/work_survey.jpg",
-            "summary": "道路拡幅に必要な用地取得のための境界確定および分筆登記測量。",
+            "summary": "駅周辺の再開発に伴う境界確定測量。複雑な土地所有状況と歴史的資料の整合性を整理し、権利関係の明確化を行いました。",
             "details": {
-                "issue": "古い公図と現況の不整合調整",
-                "approach": "徹底した資料調査と地元精通者への聞き取り",
-                "deliverables": ["用地実測図", "地積測量図", "境界確認書"],
-                "notes": "早期着工に向けた迅速な成果納品"
+                "point": "権利関係が細分化された市街地において、旧土地台帳の徹底調査と対面での丁寧な立会いを実施。長年の境界不明を解消し、事業着工へ貢献しました。",
+                "equipment": ["高精度トータルステーション"]
             }
         },
         {
@@ -95,14 +94,12 @@ const appData = {
             "type": "compensation",
             "area": "桜井市",
             "client": "奈良県",
-            "title": "河川改修に伴う事業損失調査",
+            "title": "一級河川改修事業における事業損失調査",
             "image": "/images/work_compensation.jpg",
-            "summary": "工事振動等による近隣家屋への事前事後調査。",
+            "summary": "河川改修工事の影響が懸念される近隣家屋に対し、事前・事後の厳密な家屋調査を実施。住民の安心と公共事業の信頼性を確保しました。",
             "details": {
-                "issue": "工事影響範囲の特定と現状証拠保全",
-                "approach": "写真撮影と傾斜測定による客観的記録",
-                "deliverables": ["事前調査報告書", "事後調査報告書", "写真帳"],
-                "notes": "住民不安払拭のための丁寧な説明"
+                "point": "工事前後の建物の傾斜やクラックを精密に記録。科学的根拠に基づいた客観的なデータを提示することで、トラブルを未然に防ぎ円滑な事業遂行をサポートしました。",
+                "equipment": ["デジタル傾斜計", "3Dスキャナー"]
             }
         },
         {
@@ -111,14 +108,12 @@ const appData = {
             "type": "survey",
             "area": "五條市",
             "client": "五條市",
-            "title": "防災公園整備に伴う基準点測量",
+            "title": "大規模防災公園整備のための広域基準点測量",
             "image": "/images/work_survey.jpg",
-            "summary": "広域的な公園整備計画の基準となる4級基準点の設置。",
+            "summary": "新設される防災拠点の核となる公園整備に向け、全体の設計の基点となる公共基準点を設置。基盤整備の品質を支えています。",
             "details": {
-                "issue": "高低差のある山間部での精度確保",
-                "approach": "GNSS測量機の活用による効率化",
-                "deliverables": ["基準点網図", "成果簿", "点の記"],
-                "notes": "後続の工事測量でも使用可能な恒久標識設置"
+                "point": "起伏の激しい地形条件下でGNSS衛星観測を実施。スタティック解析により、広大な開発区域全体における測量の統一基準を極めて高い精度で確立しました。",
+                "equipment": ["2周波GNSS受信機"]
             }
         }
     ],
@@ -127,15 +122,31 @@ const appData = {
         "roles": [
             {
                 "id": "role-surveyor",
-                "title": "測量技術者",
-                "summary": "現場計測と成果整理を通じ、公共事業の根拠をつくる。",
-                "requirements": ["普通自動車免許（AT限定可）", "測量士補あれば尚可"]
+                "title": "測量技術者（正社員）",
+                "summary": "最新の測量技術を用い、公共事業の起点となる高精度なデータ作成をリードします。",
+                "description": "道路、河川、地積調査など幅広い公共測量業務を担当していただきます。最新のドローン測量やGNSS測量を積極的に導入しており、技術者としてのキャリアアップを強力に支援します。",
+                "requirements": ["普通自動車免許（AT限定可）", "測量士または測量士補の有資格者優遇", "未経験者も意欲があれば歓迎"],
+                "jobDetails": [
+                    { "label": "給与", "value": "月給 250,000円 〜 450,000円（経験・能力を考慮）" },
+                    { "label": "諸手当", "value": "資格手当、住宅手当、家族手当、通勤手当" },
+                    { "label": "勤務時間", "value": "8:30 〜 17:30（休憩60分）" },
+                    { "label": "休日・休暇", "value": "土日祝（完全週休2日制）、夏季・冬季休暇、有給休暇" },
+                    { "label": "勤務地", "value": "奈良県大和郡山市（現場は主に奈良県内）" }
+                ]
             },
             {
                 "id": "role-comp",
-                "title": "補償調査スタッフ",
-                "summary": "調査・資料作成を通じ、合意形成の前提を整える。",
-                "requirements": ["PC基本操作（Word, Excel）", "未経験歓迎"]
+                "title": "補償調査・コンサルタント（正社員）",
+                "summary": "建物の調査や積算を通じて、公共事業における権利者の正当な補償を支えます。",
+                "description": "公共事業の用地取得に伴う、家屋や工作物の調査および補償額の算定業務です。住民の方々と対話し、公平で正確な調査結果をまとめる極めて社会貢献度の高い仕事です。",
+                "requirements": ["PC基本操作（Excel, Word）", "対人コミュニケーションを大切にできる方", "建築・不動産関連の知識があれば尚可"],
+                "jobDetails": [
+                    { "label": "給与", "value": "月給 230,000円 〜 400,000円（経験・能力を考慮）" },
+                    { "label": "諸手当", "value": "資格手当（補償業務管理士等）、役職手当、残業手当" },
+                    { "label": "勤務時間", "value": "8:30 〜 17:30（休憩60分）" },
+                    { "label": "休日・休暇", "value": "年間休日120日以上、完全週休2日制（土日祝）" },
+                    { "label": "福利厚生", "value": "社会保険完備、退職金制度、資格取得支援制度" }
+                ]
             }
         ],
         "numbers": [
@@ -313,10 +324,11 @@ function updateHeader(scrollY) {
 }
 
 window.addEventListener('scroll', () => {
-    lastScrollY = window.scrollY;
+    const currentScrollY = window.scrollY;
     if (!ticking) {
         window.requestAnimationFrame(() => {
-            updateHeader(lastScrollY);
+            updateHeader(currentScrollY);
+            lastScrollY = currentScrollY;
             ticking = false;
         });
         ticking = true;
@@ -432,7 +444,7 @@ function renderHome() {
                         <div class="w-16 h-1 bg-brandGold mb-6"></div>
                         <p class="text-gray-500">最新の実績事例</p>
                     </div>
-                    <a href="/works/" class="group flex items-center gap-2 text-brandNavy font-en font-bold tracking-widest hover:text-brandGold transition-colors mt-8">
+                    <a href="${getPath('/works/')}" class="group flex items-center gap-2 text-brandNavy font-en font-bold tracking-widest hover:text-brandGold transition-colors mt-8">
                         VIEW ALL <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-2 transition-transform"></i>
                     </a>
                 </div>
@@ -450,11 +462,32 @@ function renderHome() {
                 </div>
                 <div class="reveal delay-100">
                     <dl class="grid md:grid-cols-12 border-t border-line">
-                         <div class="md:col-span-4 py-5 font-bold text-brandNavy flex items-center">会社名</div>
-                         <div class="md:col-span-8 py-5 border-b border-line md:border-b-0 md:border-t-0 text-gray-600 flex items-center">${site.companyName}</div>
+                         <div class="md:col-span-4 py-3 md:py-5 font-bold text-brandNavy flex items-center bg-gray-50 md:bg-transparent px-4 md:px-0">会社名</div>
+                         <div class="md:col-span-8 py-3 md:py-5 border-b border-line md:border-b-0 md:border-t-0 text-gray-600 flex items-center px-4 md:px-0">${site.companyName}</div>
                          <div class="md:col-span-12 h-[1px] bg-line hidden md:block"></div>
-                         <div class="md:col-span-4 py-5 font-bold text-brandNavy flex items-center">所在地</div>
-                         <div class="md:col-span-8 py-5 border-b border-line md:border-b-0 md:border-t-0 text-gray-600 flex items-center">${site.area}</div>
+
+                         <div class="md:col-span-4 py-3 md:py-5 font-bold text-brandNavy flex items-center bg-gray-50 md:bg-transparent px-4 md:px-0">設立日</div>
+                         <div class="md:col-span-8 py-3 md:py-5 border-b border-line md:border-b-0 md:border-t-0 text-gray-600 flex items-center px-4 md:px-0">${site.founded}</div>
+                         <div class="md:col-span-12 h-[1px] bg-line hidden md:block"></div>
+
+                         <div class="md:col-span-4 py-3 md:py-5 font-bold text-brandNavy flex items-center bg-gray-50 md:bg-transparent px-4 md:px-0">資本金</div>
+                         <div class="md:col-span-8 py-3 md:py-5 border-b border-line md:border-b-0 md:border-t-0 text-gray-600 flex items-center px-4 md:px-0">${site.capital}</div>
+                         <div class="md:col-span-12 h-[1px] bg-line hidden md:block"></div>
+
+                         <div class="md:col-span-4 py-3 md:py-5 font-bold text-brandNavy flex items-center bg-gray-50 md:bg-transparent px-4 md:px-0">測量業者登録</div>
+                         <div class="md:col-span-8 py-3 md:py-5 border-b border-line md:border-b-0 md:border-t-0 text-gray-600 flex items-center px-4 md:px-0">${site.license}</div>
+                         <div class="md:col-span-12 h-[1px] bg-line hidden md:block"></div>
+
+                         <div class="md:col-span-4 py-3 md:py-5 font-bold text-brandNavy flex items-center bg-gray-50 md:bg-transparent px-4 md:px-0">代表者</div>
+                         <div class="md:col-span-8 py-3 md:py-5 border-b border-line md:border-b-0 md:border-t-0 text-gray-600 flex items-center px-4 md:px-0">${site.ceo}</div>
+                         <div class="md:col-span-12 h-[1px] bg-line hidden md:block"></div>
+
+                         <div class="md:col-span-4 py-3 md:py-5 font-bold text-brandNavy flex items-center bg-gray-50 md:bg-transparent px-4 md:px-0">所在地</div>
+                         <div class="md:col-span-8 py-3 md:py-5 border-b border-line md:border-b-0 md:border-t-0 text-gray-600 flex items-center px-4 md:px-0">${site.area}</div>
+                         <div class="md:col-span-12 h-[1px] bg-line hidden md:block"></div>
+
+                         <div class="md:col-span-4 py-3 md:py-5 font-bold text-brandNavy flex items-center bg-gray-50 md:bg-transparent px-4 md:px-0">事業内容</div>
+                         <div class="md:col-span-8 py-3 md:py-5 border-b border-line md:border-b-0 md:border-t-0 text-gray-600 flex items-center px-4 md:px-0">${site.business.join('、')}</div>
                     </dl>
                     <div class="mt-12 h-80 md:h-[450px] w-full bg-gray-100 shadow-inner rounded-sm overflow-hidden border border-line">
                         <iframe src="https://maps.google.com/maps?q=${site.area}&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -463,17 +496,56 @@ function renderHome() {
             </div>
         </section>
 
-        <section class="relative py-32 bg-brandNavy overflow-hidden">
-            <div class="absolute inset-0 z-0">
-                <img src="${getPath('/images/recruit.jpg')}" class="w-full h-full object-cover opacity-20">
-                <div class="absolute inset-0 bg-brandNavy/80"></div>
-            </div>
-            <div class="container mx-auto px-6 relative z-10 text-center reveal">
-                <h2 class="text-4xl md:text-5xl font-en font-bold text-white mb-6">RECRUIT</h2>
-                <p class="text-gray-300 mb-10 text-lg tracking-wide">確実な成果を積み上げる技術者へ。</p>
-                <a href="${getPath('/careers/')}" class="inline-block bg-white text-brandNavy px-10 py-4 font-bold font-en tracking-widest hover:bg-brandGold hover:text-white transition-all duration-300">
-                    JOIN US
-                </a>
+        <section class="py-24 md:py-32 bg-white overflow-hidden">
+            <div class="container mx-auto px-6 max-w-[1400px]">
+                <div class="relative bg-brandNavy overflow-hidden rounded-sm group min-h-[450px] flex items-center">
+                    <!-- Background Design: Large Ghost Text -->
+                    <div class="absolute -bottom-10 -right-10 text-[120px] md:text-[200px] font-en font-bold text-white/[0.03] select-none pointer-events-none tracking-tighter italic">
+                        RECRUIT
+                    </div>
+                    
+                    <!-- Surveying Motif: Viewfinder Corners -->
+                    <div class="absolute inset-0 pointer-events-none p-6 md:p-10 opacity-40">
+                        <div class="absolute top-6 left-6 w-12 h-12 border-t border-l border-brandGold/40 group-hover:w-16 group-hover:h-16 transition-all duration-700"></div>
+                        <div class="absolute top-6 right-6 w-12 h-12 border-t border-r border-brandGold/40 group-hover:w-16 group-hover:h-16 transition-all duration-700"></div>
+                        <div class="absolute bottom-6 left-6 w-12 h-12 border-b border-l border-brandGold/40 group-hover:w-16 group-hover:h-16 transition-all duration-700"></div>
+                        <div class="absolute bottom-6 right-6 w-12 h-12 border-b border-r border-brandGold/40 group-hover:w-16 group-hover:h-16 transition-all duration-700"></div>
+                    </div>
+
+                    <!-- Background Image & Gradient -->
+                    <div class="absolute inset-0 z-0">
+                        <img src="${getPath('/images/recruit.jpg')}" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 transition duration-1000 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-r from-brandNavy via-brandNavy/60 to-transparent"></div>
+                    </div>
+                    
+                    <div class="relative z-10 w-full py-20 px-8 md:px-20 flex flex-col md:flex-row items-center justify-between gap-12">
+                        <div class="reveal flex-grow">
+                            <div class="flex items-center gap-4 mb-6">
+                                <span class="w-8 h-[1px] bg-brandGold"></span>
+                                <span class="text-brandGold text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase">Careers</span>
+                            </div>
+                            <h2 class="text-4xl md:text-6xl font-en font-bold text-white mb-8 leading-tight">
+                                未来を測り、<br class="hidden md:block">
+                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">地図に残す</span>仕事を。
+                            </h2>
+                            <p class="text-gray-300 text-base md:text-lg tracking-wide max-w-xl leading-relaxed pl-6 border-l border-white/20">
+                                公共事業という大きな舞台で、あなたの技術が社会の基盤を支えます。<br class="hidden md:block">
+                                正確さを追求し、誠実に土地と向き合う仲間を求めています。
+                            </p>
+                        </div>
+                        
+                        <!-- Premium Circular CTA -->
+                        <div class="reveal delay-200 shrink-0">
+                            <a href="${getPath('/careers/')}" class="relative inline-flex items-center justify-center w-40 h-40 md:w-52 md:h-52 rounded-full border border-white/20 text-white font-sans font-bold tracking-[0.1em] group/btn transition-all duration-700 hover:border-brandGold overflow-hidden bg-brandNavy/30 backdrop-blur-sm px-4">
+                                <span class="relative z-10 group-hover/btn:text-brandNavy transition-colors duration-500 text-sm md:text-lg">応募する</span>
+                                <div class="absolute inset-0 bg-brandGold translate-y-full group-hover/btn:translate-y-0 transition-transform duration-700"></div>
+                                <div class="absolute top-0 right-0 p-4 md:p-6 opacity-0 group-hover/btn:opacity-100 group-hover/btn:translate-x-2 group-hover/btn:-translate-y-2 transition-all duration-700">
+                                    <i data-lucide="arrow-up-right" class="w-5 h-5 md:w-6 md:h-6 text-brandNavy"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     `;
@@ -593,15 +665,17 @@ function renderCareers() {
 
             <div class="relative bg-brandNavy text-white p-8 md:p-16 rounded-sm text-center shadow-xl overflow-hidden group reveal">
                 <div class="absolute inset-0 z-0">
-                    <img src="/images/recruit.jpg" class="w-full h-full object-cover opacity-50">
+                    <img src="${getPath('/images/recruit.jpg')}" class="w-full h-full object-cover opacity-50">
                     <div class="absolute inset-0 bg-brandNavy/50"></div>
                 </div>
                 <div class="relative z-10">
                     <h2 class="text-2xl font-bold mb-4">Entry / Contact</h2>
                     <p class="text-gray-100 mb-8 max-w-lg mx-auto">採用についてのお問い合わせはこちら</p>
-                    <a href="${getPath('/contact/?type=recruit')}" class="inline-flex items-center gap-2 bg-blue-600 text-white px-10 py-4 font-bold hover:bg-white hover:text-blue-600 transition duration-300">
+                    <a href="${getPath('/contact/?type=recruit')}" class="peer inline-flex items-center gap-2 bg-blue-600 text-white px-10 py-4 font-bold hover:bg-white hover:text-blue-600 transition duration-300 relative z-20">
                         応募フォームへ <i data-lucide="arrow-right" class="w-5 h-5"></i>
                     </a>
+                    <!-- Section Background Sweep layer triggered by button hover -->
+                    <div class="absolute -inset-8 md:-inset-16 bg-white/10 -translate-x-full peer-hover:translate-x-0 transition-transform duration-1000 ease-in-out pointer-events-none -z-10"></div>
                 </div>
             </div>
         </div>
@@ -662,6 +736,7 @@ function renderContact() {
                         ${buttonLabel} <i data-lucide="external-link" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </a>
                     <p class="text-xs text-gray-400 mt-4">${helperText}</p>
+                    <p class="text-[10px] text-gray-400 mt-2 opacity-70">※外部サービス（Google フォーム）を使用しています。クリックすると別タブでフォームが開きます。</p>
                 </div>
             </div>
         </div>
@@ -764,13 +839,59 @@ window.openCareerModal = (id) => {
     const role = appData.careers.roles.find(r => r.id === id);
     if (!role) return;
     const modalContent = document.getElementById('modal-content');
+
+    // Set to single column for careers
+    modalContent.className = 'bg-white';
+
     modalContent.innerHTML = `
-        <div class="h-64 md:h-full bg-gray-100"><img src="${getPath('/images/recruit.jpg')}" class="w-full h-full object-cover"></div>
-        <div class="p-8 md:p-12 overflow-y-auto max-h-[60vh] md:max-h-full">
-            <h2 class="text-2xl md:text-3xl font-bold text-brandNavy mb-4">${role.title}</h2>
-            <p class="text-gray-600 mb-6">${role.summary}</p>
-            <div class="mt-8 pt-8 border-t border-line">
-                 <a href="${getPath('/contact/?type=recruit')}" onclick="closeModal()" class="block w-full text-center bg-brandNavy text-white py-4 font-bold tracking-widest hover:bg-brandGold transition-colors">エントリー</a>
+        <div class="p-8 md:p-16 overflow-y-auto max-h-[90vh] text-ink">
+            <div class="mb-10 text-center">
+                <span class="inline-block px-3 py-1 bg-brandGold/10 text-brandGold text-[10px] font-bold tracking-widest uppercase rounded-full mb-4">Recruitment</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-brandNavy mb-6 leading-tight">${role.title}</h2>
+                <div class="w-12 h-1 bg-brandGold mx-auto mb-8"></div>
+                <p class="text-gray-600 leading-relaxed max-w-2xl mx-auto">${role.description}</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <div>
+                    <h4 class="text-sm font-bold text-brandNavy mb-6 border-b border-line pb-2 flex items-center gap-2">
+                        <i data-lucide="clipboard-list" class="w-4 h-4 text-brandGold"></i> 応募条件
+                    </h4>
+                    <ul class="space-y-4">
+                        ${role.requirements.map(r => `
+                            <li class="flex items-start gap-3 text-sm text-gray-600">
+                                <span class="w-1.5 h-1.5 bg-brandGold rounded-full mt-1.5"></span>
+                                ${r}
+                            </li>
+                        `).join('')}
+                    </ul>
+                    
+                    <div class="mt-10 p-6 bg-gray-50 rounded border border-gray-100">
+                        <p class="text-xs font-bold text-brandNavy mb-2">求める人物像</p>
+                        <p class="text-xs text-gray-500 leading-relaxed">私たちは、誠実さと正確さを大切にし、地域の未来を支える責任感を持った方を求めています。技術の習得に意欲的な方を歓迎します。</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold text-brandNavy mb-6 border-b border-line pb-2 flex items-center gap-2">
+                        <i data-lucide="info" class="w-4 h-4 text-brandGold"></i> 勤務条件・待遇
+                    </h4>
+                    <dl class="grid gap-4">
+                        ${role.jobDetails.map(d => `
+                            <div class="grid grid-cols-3 gap-4 border-b border-gray-50 pb-3">
+                                <dt class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">${d.label}</dt>
+                                <dd class="col-span-2 text-sm text-brandNavy font-medium">${d.value}</dd>
+                            </div>
+                        `).join('')}
+                    </dl>
+                </div>
+            </div>
+
+            <div class="mt-16 pt-8 text-center border-t border-line">
+                <p class="text-xs text-gray-400 mb-8">※選考プロセスについてはエントリー後に担当者よりご連絡いたします。</p>
+                <a href="${getPath('/contact/?type=recruit')}" onclick="closeModal()" class="inline-flex items-center justify-center gap-3 w-full md:w-auto min-w-[320px] bg-brandNavy text-white px-10 py-5 font-bold tracking-widest hover:bg-brandGold transition-all duration-300 group">
+                    この職種に応募する <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-2 transition-transform"></i>
+                </a>
             </div>
         </div>
     `;
@@ -784,18 +905,50 @@ window.openWorkModal = (id) => {
     const w = appData.works.find(i => i.id === id);
     if (!w) return;
     const modalContent = document.getElementById('modal-content');
+
+    // Set class to ensure standard structure
+    modalContent.className = 'grid md:grid-cols-2';
+
     modalContent.innerHTML = `
-        <div class="h-64 md:h-full bg-gray-100"><img src="${getPath(w.image)}" class="w-full h-full object-cover"></div>
-        <div class="p-8 md:p-12 overflow-y-auto max-h-[60vh] md:max-h-full">
-            <div class="text-xs font-mono text-gray-400 mb-4">${w.year} / ${w.type === 'survey' ? '測量' : '補償'}</div>
-            <h2 class="text-2xl md:text-3xl font-bold text-brandNavy mb-2">${w.title}</h2>
-            <p class="text-sm text-gray-500 mb-8 border-b border-line pb-8">${w.client}</p>
-            <p class="text-ink leading-relaxed">${w.summary}</p>
+        <div class="h-64 md:h-full bg-gray-100">
+            <img src="${getPath(w.image)}" class="w-full h-full object-cover">
+        </div>
+        <div class="p-8 md:p-10 overflow-y-auto max-h-[60vh] md:max-h-[80vh] bg-white text-ink">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-[10px] font-mono px-2 py-0.5 bg-gray-100 text-gray-500 rounded">${w.year}</span>
+                <span class="text-[10px] font-bold font-en text-brandGold tracking-widest uppercase">${w.type === 'survey' ? 'Surveying' : 'Compensation'}</span>
+            </div>
+            <h2 class="text-xl md:text-2xl font-bold text-brandNavy mb-4 leading-tight">${w.title}</h2>
+            <div class="mb-6 space-y-1">
+                <p class="text-xs text-gray-400 flex items-center gap-2">
+                    <i data-lucide="building-2" class="w-3.5 h-3.5 text-brandGold"></i> ${w.client}
+                </p>
+                <p class="text-xs text-gray-400 flex items-center gap-2">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brandGold"></i> ${w.area}
+                </p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="bg-gray-50 p-5 rounded-sm border-l-4 border-brandGold">
+                    <h4 class="text-xs font-bold text-brandNavy mb-2 flex items-center gap-2">
+                        <i data-lucide="target" class="w-3.5 h-3.5"></i> 業務のポイント
+                    </h4>
+                    <p class="text-gray-600 text-[13px] leading-relaxed">${w.details.point}</p>
+                </div>
+
+                <div>
+                    <h4 class="text-[10px] font-en tracking-widest text-gray-400 mb-3 uppercase">Usage Equipment</h4>
+                    <div class="flex flex-wrap gap-2">
+                        ${w.details.equipment.map(e => `<span class="px-2 py-1 bg-white border border-line text-[10px] text-brandNavy">${e}</span>`).join('')}
+                    </div>
+                </div>
+            </div>
         </div>
     `;
     const modal = document.getElementById('work-modal');
     modal.classList.remove('hidden');
     setTimeout(() => { modal.classList.remove('opacity-0'); document.getElementById('modal-panel').classList.remove('scale-95', 'opacity-0'); }, 10);
+    if (window.lucide) lucide.createIcons();
 };
 
 window.closeModal = () => {
