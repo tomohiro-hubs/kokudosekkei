@@ -548,7 +548,7 @@ function renderHome() {
 
                     <!-- Background Image & Gradient -->
                     <div class="absolute inset-0 z-0">
-                        <img src="${getPath('/images/recruit.jpg')}" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 transition duration-1000 group-hover:scale-105">
+                        <img src="${getPath('/images/recruit_team_survey.png')}" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 transition duration-1000 group-hover:scale-105">
                         <div class="absolute inset-0 bg-gradient-to-r from-brandNavy via-brandNavy/60 to-transparent"></div>
                     </div>
                     
@@ -845,7 +845,7 @@ function renderCareers() {
                 </div>
                  <div class="md:col-span-7 relative">
                     <div class="relative overflow-hidden rounded-sm shadow-2xl group">
-                        <img src="${getPath('/images/recruit.jpg')}" class="w-full h-full object-cover">
+                        <img src="${getPath('/images/recruit_team_survey.png')}" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
@@ -859,7 +859,7 @@ function renderCareers() {
 
             <div class="relative bg-brandNavy text-white p-8 md:p-16 rounded-sm text-center shadow-xl overflow-hidden group reveal">
                 <div class="absolute inset-0 z-0">
-                    <img src="${getPath('/images/recruit.jpg')}" class="w-full h-full object-cover opacity-50">
+                    <img src="${getPath('/images/recruit_team_survey.png')}" class="w-full h-full object-cover opacity-50">
                     <div class="absolute inset-0 bg-brandNavy/50"></div>
                 </div>
                 <div class="relative z-10">
