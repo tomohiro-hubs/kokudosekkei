@@ -773,8 +773,13 @@ function renderWorkDetail() {
                     <p class="text-[11px] tracking-[0.2em] text-brandGold mb-4">お問い合わせ</p>
                     <h2 class="text-2xl md:text-3xl font-bold mb-5">この実績についてご相談ください</h2>
                     <p class="text-gray-300 mb-8">業務内容・進め方・概算のご相談まで、担当者が丁寧にご案内します。</p>
-                    <a href="${getPath('/contact/?type=quote')}" class="inline-flex items-center justify-center gap-2 bg-brandGold text-brandNavy px-8 py-4 font-bold hover:bg-white transition-colors">
-                        この実績について問い合わせる <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    <a href="${getPath('/contact/?type=quote')}" class="group relative inline-flex items-center justify-center px-10 py-4 font-bold border border-brandGold bg-brandGold text-brandNavy overflow-hidden transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60">
+                        <span class="absolute inset-0 bg-brandNavy scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out"></span>
+                        <span class="absolute inset-0 bg-white/35 -translate-x-[120%] skew-x-[-20deg] group-hover:translate-x-[140%] transition-transform duration-700 ease-out"></span>
+                        <span class="relative z-10 inline-flex items-center gap-2 tracking-wide group-hover:text-white transition-colors duration-300">
+                            この実績について問い合わせる
+                            <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </span>
                     </a>
                 </div>
             </section>
@@ -876,59 +881,143 @@ function renderContact() {
     const { site } = appData;
 
     const params = new URLSearchParams(window.location.search);
-    let currentType = params.get('type') || 'biz';
-
-    let buttonLabel = 'お問い合わせフォームへ';
-    let helperText = 'フォームよりお問い合わせ内容をお送りください。';
-
-    if (currentType === 'recruit') {
-        buttonLabel = '採用応募フォームへ';
-        helperText = '履歴書等のデータはフォーム内でアップロード、または後ほど担当者よりご案内いたします。';
-    } else if (currentType === 'quote') {
-        buttonLabel = 'お見積り依頼フォームへ';
-        helperText = '概算のお見積り作成に必要な情報をご入力ください。';
-    }
+    const currentType = params.get('type') || 'biz';
+    const inquiryMeta = {
+        biz: {
+            label: '業務のご相談',
+            lead: '測量・調査業務の進め方や対応可否をご相談いただけます。',
+            detail: 'ご用件を選び、連絡先と相談内容をご入力ください。',
+            placeholder: '対象区域、検討中の業務内容、希望時期などをご記入ください。'
+        },
+        quote: {
+            label: 'お見積り依頼',
+            lead: '概算費用や必要資料について確認したい方向けの窓口です。',
+            detail: 'ご用件を選び、連絡先と相談内容をご入力ください。',
+            placeholder: '対象場所、図面の有無、希望納期、ご相談内容をご記入ください。'
+        },
+        recruit: {
+            label: '採用について',
+            lead: '採用応募や募集内容に関するお問い合わせを受け付けています。',
+            detail: 'ご用件を選び、連絡先と相談内容をご入力ください。',
+            placeholder: '希望職種、保有資格、ご質問内容などをご記入ください。'
+        }
+    };
+    const activeInquiry = inquiryMeta[currentType] || inquiryMeta.biz;
 
     container.innerHTML = `
-        <div class="pt-32 pb-24 container mx-auto px-6 min-h-screen max-w-4xl">
-            <div class="mb-16 reveal text-center">
-                <h1 class="text-4xl md:text-5xl font-en font-bold text-brandNavy mb-6">CONTACT</h1>
-                <p class="text-gray-500">お問い合わせ</p>
-            </div>
+        <article class="bg-[#eef1f5]">
+            <section class="relative overflow-hidden bg-brandNavy text-white pt-32 pb-20">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(197,160,89,0.28),transparent_35%),radial-gradient(circle_at_85%_10%,rgba(255,255,255,0.08),transparent_30%)]"></div>
+                <div class="absolute inset-y-0 right-[8%] w-px bg-white/10 hidden lg:block"></div>
+                <div class="absolute right-[-80px] bottom-[-30px] text-white/[0.05] font-en text-[120px] md:text-[220px] leading-none select-none">CONTACT</div>
+                <div class="container mx-auto px-6 relative z-10">
+                    <div class="grid lg:grid-cols-12 gap-12 items-end">
+                        <div class="lg:col-span-7 reveal active">
+                            <p class="text-[11px] font-en tracking-[0.24em] text-brandGold mb-5">CONTACT</p>
+                            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">お問い合わせ</h1>
+                            <p class="max-w-2xl text-gray-300 leading-loose text-sm md:text-base">
+                                サービスに関するご相談・お見積もりのご依頼など、お気軽にお問い合わせください。<br>
+                                内容を確認のうえ、通常1〜2営業日以内に担当者よりご連絡いたします。
+                            </p>
+                        </div>
+                        <div class="lg:col-span-5 reveal delay-100">
+                            <div class="border border-white/15 bg-white/5 backdrop-blur-sm p-8 md:p-10">
+                                <p class="text-[11px] tracking-[0.2em] text-brandGold mb-4">DIRECT LINE</p>
+                                <div class="text-3xl md:text-4xl font-bold font-mono mb-3">${site.contact.tel}</div>
+                                <p class="text-sm text-gray-300 mb-6">${site.contact.hours}</p>
+                                <div class="h-px bg-white/10 mb-6"></div>
+                                <p class="text-sm text-gray-300 leading-relaxed">
+                                    急ぎのご相談はお電話でも受け付けています。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-            <div class="bg-white border border-line p-8 md:p-12 reveal delay-100">
-                <div class="grid md:grid-cols-2 gap-12 mb-12">
-                    <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">INQUIRY TYPE</label>
-                        <div class="space-y-3">
-                            <button onclick="updateContactType('biz')" class="w-full text-left p-4 border transition-all duration-300 ${currentType === 'biz' ? 'border-brandNavy bg-brandNavy text-white' : 'border-line hover:border-brandNavy'}">
-                                業務のご相談
-                            </button>
-                            <button onclick="updateContactType('quote')" class="w-full text-left p-4 border transition-all duration-300 ${currentType === 'quote' ? 'border-brandNavy bg-brandNavy text-white' : 'border-line hover:border-brandNavy'}">
-                                お見積り依頼
-                            </button>
-                            <button onclick="updateContactType('recruit')" class="w-full text-left p-4 border transition-all duration-300 ${currentType === 'recruit' ? 'border-brandNavy bg-brandNavy text-white' : 'border-line hover:border-brandNavy'}">
-                                採用について
-                            </button>
+            <section class="container mx-auto px-6 pt-14">
+                <div class="grid md:grid-cols-3 gap-px bg-line border border-line reveal">
+                    ${Object.entries(inquiryMeta).map(([key, item]) => `
+                        <div class="bg-white p-6 md:p-8">
+                            <p class="text-[11px] tracking-[0.2em] text-brandGold mb-3">${String(Object.keys(inquiryMeta).indexOf(key) + 1).padStart(2, '0')}</p>
+                            <h2 class="text-xl font-bold text-brandNavy mb-3">${item.label}</h2>
+                            <p class="text-sm text-gray-600 leading-relaxed">${item.lead}</p>
                         </div>
+                    `).join('')}
+                </div>
+            </section>
+
+            <section class="container mx-auto px-6 py-16 md:py-20">
+                <div class="grid lg:grid-cols-12 gap-10 items-start">
+                    <div class="lg:col-span-4 reveal">
+                        <p class="text-[11px] tracking-[0.2em] text-brandGold mb-4">INQUIRY GUIDE</p>
+                        <h2 class="text-3xl md:text-4xl font-bold text-brandNavy leading-tight mb-6">お問い合わせ内容を、<br>ご入力ください。</h2>
+                        <p id="contact-type-description" class="text-sm text-gray-600 leading-loose">${activeInquiry.detail}</p>
                     </div>
-                    <div class="flex flex-col justify-center">
-                        <div class="bg-gray-50 p-8 h-full flex flex-col justify-center text-center">
-                            <div class="text-brandGold mb-4"><i data-lucide="phone" class="w-8 h-8 mx-auto"></i></div>
-                            <div class="text-2xl font-bold text-brandNavy font-mono mb-2">${site.contact.tel}</div>
-                            <div class="text-xs text-gray-400">${site.contact.hours}</div>
+
+                    <div class="lg:col-span-8 reveal delay-100">
+                        <div class="bg-white border border-line p-8 md:p-10 shadow-[0_20px_60px_rgba(10,25,47,0.08)]">
+                            <form id="contact-inline-form" data-form-url="${site.contact.formUrl}" onsubmit="submitContactForm(event)" class="space-y-8">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div class="md:col-span-2">
+                                        <label for="inquiry-type" class="block text-xs font-bold text-gray-400 tracking-widest mb-3">ご用件</label>
+                                        <select id="inquiry-type" name="inquiryType" onchange="syncContactTypeUI(this.value)" class="w-full border border-line px-4 py-4 text-sm bg-white focus:outline-none focus:border-brandNavy" required>
+                                            <option value="biz" ${currentType === 'biz' ? 'selected' : ''}>業務のご相談</option>
+                                            <option value="quote" ${currentType === 'quote' ? 'selected' : ''}>お見積り依頼</option>
+                                            <option value="recruit" ${currentType === 'recruit' ? 'selected' : ''}>採用について</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="contact-name" class="block text-xs font-bold text-gray-400 tracking-widest mb-3">お名前</label>
+                                        <input id="contact-name" name="name" type="text" placeholder="例）山田 太郎" class="w-full border border-line px-4 py-4 text-sm placeholder:text-gray-400 focus:outline-none focus:border-brandNavy" required>
+                                    </div>
+                                    <div>
+                                        <label for="contact-email" class="block text-xs font-bold text-gray-400 tracking-widest mb-3">メールアドレス</label>
+                                        <input id="contact-email" name="email" type="email" placeholder="例）example@kokudo.co.jp" class="w-full border border-line px-4 py-4 text-sm placeholder:text-gray-400 focus:outline-none focus:border-brandNavy" required>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="contact-message" class="block text-xs font-bold text-gray-400 tracking-widest mb-3">お問い合わせ内容</label>
+                                    <textarea id="contact-message" name="message" rows="7" class="w-full border border-line px-4 py-4 text-sm leading-loose focus:outline-none focus:border-brandNavy" placeholder="${activeInquiry.placeholder}" required></textarea>
+                                </div>
+
+                                <div class="flex md:justify-end pt-2">
+                                    <button type="submit" class="group relative inline-flex items-center justify-center px-10 py-4 font-bold border border-brandGold bg-brandGold text-brandNavy overflow-hidden transition-transform duration-300 hover:-translate-y-0.5">
+                                        <span class="absolute inset-0 bg-brandNavy scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out"></span>
+                                        <span class="absolute inset-0 bg-white/35 -translate-x-[120%] skew-x-[-20deg] group-hover:translate-x-[140%] transition-transform duration-700 ease-out"></span>
+                                        <span class="relative z-10 inline-flex items-center gap-2 group-hover:text-white transition-colors duration-300">
+                                            送信内容を確認する
+                                            <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="text-center pt-8 border-t border-line">
-                    <a href="${site.contact.formUrl}" target="_blank" class="inline-flex items-center gap-3 bg-brandNavy text-white px-10 py-5 font-bold tracking-widest hover:bg-brandGold transition-colors group">
-                        ${buttonLabel} <i data-lucide="external-link" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                    <p class="text-xs text-gray-400 mt-4">${helperText}</p>
-                    <p class="text-[10px] text-gray-400 mt-2 opacity-70">※外部サービス（Google フォーム）を使用しています。クリックすると別タブでフォームが開きます。</p>
+            </section>
+
+            <section class="container mx-auto px-6 pb-24">
+                <div class="grid md:grid-cols-3 gap-px bg-line border border-line reveal delay-200">
+                    <div class="bg-white p-6">
+                        <p class="text-[11px] tracking-[0.2em] text-brandGold mb-3">RESPONSE</p>
+                        <h3 class="text-lg font-bold text-brandNavy mb-2">確認後にご連絡</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">内容確認後、担当者より折り返しご連絡します。</p>
+                    </div>
+                    <div class="bg-white p-6">
+                        <p class="text-[11px] tracking-[0.2em] text-brandGold mb-3">SCOPE</p>
+                        <h3 class="text-lg font-bold text-brandNavy mb-2">図面未整理でも可</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">段階が初期でも構いません。わかる範囲の情報でご相談いただけます。</p>
+                    </div>
+                    <div class="bg-white p-6">
+                        <p class="text-[11px] tracking-[0.2em] text-brandGold mb-3">NOTICE</p>
+                        <h3 class="text-lg font-bold text-brandNavy mb-2">営業連絡はご遠慮ください</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">営業目的のご連絡には返信できない場合があります。</p>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </article>
     `;
 }
 
@@ -1136,8 +1225,71 @@ window.closeModal = () => {
     setTimeout(() => { modal.classList.add('hidden'); }, 300);
 };
 
-window.updateContactType = (type) => {
-    window.location.href = `?type=${type}`;
+window.submitContactForm = async (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData(form);
+    const inquiryLabels = {
+        biz: '業務のご相談',
+        quote: 'お見積り依頼',
+        recruit: '採用について'
+    };
+
+    const inquiryType = String(formData.get('inquiryType') || 'biz');
+    const name = String(formData.get('name') || '');
+    const email = String(formData.get('email') || '');
+    const message = String(formData.get('message') || '');
+    const formattedMessage = [
+        `ご用件: ${inquiryLabels[inquiryType] || inquiryType}`,
+        `お名前: ${name}`,
+        `メールアドレス: ${email}`,
+        '',
+        'お問い合わせ内容',
+        message
+    ].join('\n');
+
+    try {
+        await navigator.clipboard.writeText(formattedMessage);
+    } catch (e) {
+        console.error('Clipboard copy failed', e);
+    }
+
+    const formUrl = form.getAttribute('data-form-url');
+    if (formUrl) {
+        window.open(formUrl, '_blank', 'noopener,noreferrer');
+    }
+
+    alert('入力内容をコピーし、送信ページを開きました。貼り付けてご利用ください。');
+};
+
+window.syncContactTypeUI = (type) => {
+    const inquiryMeta = {
+        biz: {
+            label: '業務のご相談',
+            detail: '業務の背景や対象範囲が未整理でも構いません。まずは状況を共有いただければ、必要な進め方をご案内します。',
+            placeholder: '対象区域、検討中の業務内容、希望時期などをご記入ください。'
+        },
+        quote: {
+            label: 'お見積り依頼',
+            detail: '対象場所、図面の有無、希望納期などが分かるとご案内がスムーズです。',
+            placeholder: '対象場所、図面の有無、希望納期、ご相談内容をご記入ください。'
+        },
+        recruit: {
+            label: '採用について',
+            detail: '希望職種やご経歴、確認したい条件などがあればご記入ください。',
+            placeholder: '希望職種、保有資格、ご質問内容などをご記入ください。'
+        }
+    };
+
+    const activeInquiry = inquiryMeta[type] || inquiryMeta.biz;
+    const labelElement = document.getElementById('contact-type-label');
+    const descriptionElement = document.getElementById('contact-type-description');
+    const messageElement = document.getElementById('contact-message');
+
+    if (labelElement) labelElement.textContent = activeInquiry.label;
+    if (descriptionElement) descriptionElement.textContent = activeInquiry.detail;
+    if (messageElement) messageElement.setAttribute('placeholder', activeInquiry.placeholder);
 };
 
 // Mobile Menu
