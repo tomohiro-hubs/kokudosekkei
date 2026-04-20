@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>令和7年度 一般県道木津横田線 歩道測量業務委託 | 業務実績 | 株式会社国土調査設計事務所</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandNavy: '#0A192F',
+                        brandGold: '#C5A059',
+                        brandGray: '#F8F9FA',
+                        line: '#E2E8F0',
+                        ink: '#1A202C',
+                        paper: '#F8F9FA',
+                        accentCyan: '#64FFDA'
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        en: ['"Montserrat"', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'scale-in': 'scale-in 20s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        'scale-in': {
+                            '0%': { transform: 'scale(1)' },
+                            '100%': { transform: 'scale(1.1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body class="bg-paper text-ink flex flex-col min-h-screen overflow-x-hidden">
+    <header class="fixed top-0 w-full z-50 transition-all duration-300 h-20 flex items-center border-b border-white/10" id="main-header">
+        <div class="container mx-auto px-6 h-full flex items-center justify-between">
+            <a href="../../" class="flex items-center gap-3 group">
+                <div class="flex flex-col">
+                    <span class="font-bold text-white text-sm tracking-widest group-hover:text-brandGold transition-colors">株式会社国土調査設計事務所</span>
+                    <span class="text-[10px] text-gray-400 font-en tracking-wider uppercase">Survey & Design Firm</span>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center gap-10">
+                <nav class="flex gap-8 text-sm font-sans font-medium tracking-wide">
+                    <a href="../../" class="nav-link text-white hover:text-brandGold transition-colors py-1" data-path="/">ホーム</a>
+                    <a href="../../works/" class="nav-link text-white hover:text-brandGold transition-colors py-1" data-path="/works/">業務実績</a>
+                    <a href="../../careers/" class="nav-link text-white hover:text-brandGold transition-colors py-1" data-path="/careers/">採用情報</a>
+                </nav>
+                <a href="../../contact/" class="bg-white/10 text-white border border-white/20 px-6 py-2.5 rounded-sm text-xs font-bold font-sans tracking-wider hover:bg-brandGold hover:border-brandGold hover:text-brandNavy transition-all duration-300">お問い合わせ</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-brandNavy z-40 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col pt-24 px-6">
+        <nav class="flex flex-col gap-6 text-white font-en text-2xl font-bold">
+            <a href="../../" class="mobile-nav-link border-b border-white/10 pb-4">HOME</a>
+            <a href="../../works/" class="mobile-nav-link border-b border-white/10 pb-4">WORKS</a>
+            <a href="../../careers/" class="mobile-nav-link border-b border-white/10 pb-4">CAREERS</a>
+            <a href="../../contact/" class="mobile-nav-link border-b border-white/10 pb-4 text-brandGold">CONTACT</a>
+        </nav>
+        <button id="mobile-menu-close" class="absolute top-6 right-6 text-white p-2">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+    </div>
+
+    <main id="main-content" class="flex-grow">
+        <div id="page-work-detail" class="page-section active" data-work-slug="kizuyokota-sidewalk-survey"></div>
+    </main>
+
+    <footer class="bg-brandNavy text-gray-400 py-20 border-t border-white/5 relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-en text-gray-500">
+                <p>&copy; <span id="footer-year"></span> KOKUDO Survey & Design. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-24 md:bottom-8 right-8 bg-brandGold text-brandNavy p-3 rounded-full shadow-lg z-50 opacity-0 invisible transition-all duration-300 hover:bg-white hover:scale-110">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
+
+    <a href="../../contact/" class="fixed bottom-0 left-0 w-full bg-brandNavy text-white text-center py-4 font-bold text-lg z-[60] md:hidden shadow-[0_-4px_10px_rgba(0,0,0,0.1)] flex items-center justify-center gap-2 border-t border-brandGold">
+        <i data-lucide="mail" class="w-5 h-5"></i> 問い合わせる
+    </a>
+
+    <script>window.rootPath = '../../';</script>
+    <script src="../../js/script.js"></script>
+</body>
+
+</html>
