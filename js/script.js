@@ -22,7 +22,8 @@ const appData = {
             { "name": "測量士", "count": 3 }
         ],
         "contact": {
-            "tel": "0742-00-0000",
+            "tel": "0743-53-0381",
+            "fax": "0743-53-4580",
             "hours": "平日 9:00-18:00",
             "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSfDummyFormID/viewform"
         }
@@ -289,6 +290,9 @@ function renderCommonElements() {
 
     const telEl = document.getElementById('footer-tel');
     if (telEl) telEl.textContent = appData.site.contact.tel;
+
+    const faxEl = document.getElementById('footer-fax');
+    if (faxEl) faxEl.textContent = appData.site.contact.fax || '';
 
     const regList = document.getElementById('footer-registrations');
     if (regList) {
@@ -924,7 +928,8 @@ function renderContact() {
                             <div class="border border-white/15 bg-white/5 backdrop-blur-sm p-8 md:p-10">
                                 <p class="text-[11px] tracking-[0.2em] text-brandGold mb-4">DIRECT LINE</p>
                                 <div class="text-3xl md:text-4xl font-bold font-mono mb-3">${site.contact.tel}</div>
-                                <p class="text-sm text-gray-300 mb-6">${site.contact.hours}</p>
+                                <p class="text-sm text-gray-300 mb-2">${site.contact.hours}</p>
+                                <p class="text-sm text-gray-300 mb-6">FAX ${site.contact.fax || ''}</p>
                                 <div class="h-px bg-white/10 mb-6"></div>
                                 <p class="text-sm text-gray-300 leading-relaxed">
                                     急ぎのご相談はお電話でも受け付けています。
